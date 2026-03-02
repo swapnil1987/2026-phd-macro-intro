@@ -1,0 +1,6 @@
+# Self-material directory
+self-material/
+
+# Markdown files except README.md
+*.md
+!README.md

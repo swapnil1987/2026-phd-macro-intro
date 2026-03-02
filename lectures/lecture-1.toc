@@ -1,0 +1,6 @@
+\beamer@sectionintoc {1}{Why Macroeconomics}{3}{0}{1}
+\beamer@sectionintoc {2}{Measurement Foundations}{5}{0}{2}
+\beamer@sectionintoc {3}{Episodes and Method Shifts}{10}{0}{3}
+\beamer@sectionintoc {4}{Stylized Facts from Chapter 2}{17}{0}{4}
+\beamer@sectionintoc {5}{Synthesis and Next Step}{30}{0}{5}
+\beamer@sectionintoc {6}{Appendix}{32}{1}{6}

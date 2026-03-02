@@ -1,0 +1,404 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+
+\usetheme{SimplePlus}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\graphicspath{{../self-material/book/part-1/images/}}
+
+\title{Macroeconomics PhD Intro\\Lecture 1: Measurement, History, and Stylized Facts}
+\subtitle{Based on Part 1 of course book material}
+\author{Swapnil Singh}
+\institute{Lietuvos Bankas \and Kaunas University of Technology}
+\date{Spring 2026}
+
+\newcommand{\apxbutton}[1]{\hfill\hyperlink{#1}{\beamerbutton{Appendix}}}
+\newcommand{\backbutton}[1]{\hfill\hyperlink{#1}{\beamerbutton{Back}}}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Lecture Roadmap}
+\begin{itemize}
+  \item Why macroeconomics is empirical and policy-relevant.
+  \item How national accounts and price indices create the object we model.
+  \item Historical episodes that changed theory and method.
+  \item Stylized facts from Chapter 2 that discipline all macro models.
+  \item Bridge to Lecture 2: the Solow model.
+\end{itemize}
+\end{frame}
+
+\section{Why Macroeconomics}
+
+\begin{frame}{What Is Macroeconomics?}
+\begin{itemize}
+  \item Study of aggregates: output, consumption, investment, employment, inflation.
+  \item Study of distributions: income, wealth, and heterogeneity across households and firms.
+  \item Study of dynamic general equilibrium with quantitative discipline.
+  \item Study of current events through theory tied to measurement.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Organizing Question}
+\begin{block}{Core Question}
+What is going on in the macroeconomy, and what can policy do about it?
+\end{block}
+\vspace{0.8em}
+\begin{itemize}
+  \item Long run: growth, productivity, structural change.
+  \item Medium run: transitions, convergence, reforms.
+  \item Short run: recessions, financial stress, inflation episodes.
+\end{itemize}
+\end{frame}
+
+\section{Measurement Foundations}
+
+\begin{frame}{What Do We Measure?}
+\begin{itemize}
+  \item National accounts begin in nominal values (current prices).
+  \item Real quantities require deflation by a general price index.
+  \item Measurement choices are not neutral: they encode theory.
+\end{itemize}
+\begin{block}{Takeaway}
+Before explaining output fluctuations, we must define output correctly.
+\end{block}
+\end{frame}
+
+\begin{frame}{Price Index Construction}
+\hypertarget{main-price}{}
+\begin{itemize}
+  \item A price index is a weighted average of prices.
+  \item Weights can be fixed (base-year) or time-varying (chain-weighted).
+  \item Functional form matters: arithmetic, geometric, or superlative indices.
+\end{itemize}
+\begin{alertblock}{Practical Point}
+Different index formulas can change measured real growth.
+\end{alertblock}
+\apxbutton{apx-cpi}
+\end{frame}
+
+\begin{frame}{National Income and Product Accounts}
+\hypertarget{main-gdpid}{}
+\begin{block}{Three Equivalent GDP Views}
+\[
+Y = C + I + G + NX = \text{Labor Income} + \text{Capital Income} = \sum \text{Value Added}_i
+\]
+\end{block}
+\begin{itemize}
+  \item Expenditure side, income side, and production side must match.
+  \item Value-added accounting avoids double counting of intermediates.
+\end{itemize}
+\apxbutton{apx-valueadded}
+\end{frame}
+
+\begin{frame}{GDP Is Not Welfare}
+\begin{itemize}
+  \item GDP measures market production, not total well-being.
+  \item It omits leisure, many environmental amenities, and household production.
+  \item Welfare analysis requires additional objects beyond GDP.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Measurement Under Stress: COVID Episode}
+\begin{itemize}
+  \item Pandemic shock forced near real-time macro measurement.
+  \item High-frequency transactions (cards, mobility, payroll) became key inputs.
+  \item Empirical macro expanded toward administrative and private data.
+\end{itemize}
+\end{frame}
+
+\section{Episodes and Method Shifts}
+
+\begin{frame}{Great Depression and the Birth of Modern Macro}
+\begin{itemize}
+  \item Depression raised the diagnostic question: what is going on?
+  \item Systematic aggregate data made theory testable.
+  \item Keynesian analysis emphasized demand shortfalls with nominal rigidities.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Long-Run Growth Revolution}
+\hypertarget{main-growthacct}{}
+\begin{itemize}
+  \item Solow (1956, 1957): growth theory + growth accounting.
+  \item Output growth decomposed into capital, labor, and residual productivity.
+  \item The residual (TFP) became central for interpreting long-run growth.
+\end{itemize}
+\apxbutton{apx-growthacct}
+\end{frame}
+
+\begin{frame}{1970s Stagflation and Policy Credibility}
+\begin{itemize}
+  \item High inflation and unemployment challenged static Phillips-curve policy.
+  \item Expectations and policy credibility became first-order objects.
+  \item Shift from reduced-form stabilization to explicit dynamic policy design.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Kydland-Prescott: A Way Forward}
+\begin{itemize}
+  \item Rules vs discretion: commitment is a central policy issue.
+  \item Quantitative macro: disciplined models calibrated to data.
+  \item Dynamic stochastic general equilibrium became a workhorse platform.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Waves of Macroeconometrics}
+\begin{itemize}
+  \item Structural estimation and calibration of dynamic models.
+  \item VAR-based identification of shocks and propagation.
+  \item Integration of micro and administrative data in macro analysis.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Inequality and Heterogeneity}
+\begin{itemize}
+  \item Macro now models full distributions, not only representative means.
+  \item Wealth and income heterogeneity change aggregate responses.
+  \item Policy multipliers depend on distributional structure (e.g., MPC dispersion).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Macro Frontier Today}
+\begin{itemize}
+  \item Global linkages: trade, exchange rates, external balance sheets.
+  \item Climate and energy: transition dynamics and policy tradeoffs.
+  \item Public finance and monetary-fiscal interaction under uncertainty.
+\end{itemize}
+\end{frame}
+
+\section{Stylized Facts from Chapter 2}
+
+\begin{frame}{Fact 1: Trend Growth in GDP per Capita}
+\begin{columns}[T]
+\column{0.56\textwidth}
+\includegraphics[width=\linewidth]{17108034-9421-4dd7-a201-7af448ab5827-044_527_1312_870_403}
+\column{0.44\textwidth}
+\textbf{Fact}: log GDP per capita is close to linear over long horizons.\\[0.4em]
+\textbf{Interpretation}: sustained trend growth with episodic breaks.\\[0.4em]
+\textbf{Model implication}: growth models must deliver persistent productivity growth.
+\end{columns}
+\end{frame}
+
+\begin{frame}{Fact 2: Capital-Output Stability}
+\begin{columns}[T]
+\column{0.56\textwidth}
+\includegraphics[width=\linewidth]{17108034-9421-4dd7-a201-7af448ab5827-045_517_1293_425_416}
+\column{0.44\textwidth}
+\textbf{Fact}: the capital-output ratio is fairly stable over long spans.\\[0.4em]
+\textbf{Interpretation}: accumulation and depreciation balance in the long run.\\[0.4em]
+\textbf{Model implication}: balanced-growth discipline for production and savings behavior.
+\end{columns}
+\end{frame}
+
+\begin{frame}{Fact 2b: Wealth-Output Dynamics}
+\begin{columns}[T]
+\column{0.56\textwidth}
+\includegraphics[width=\linewidth]{17108034-9421-4dd7-a201-7af448ab5827-045_680_1293_1327_416}
+\column{0.44\textwidth}
+\textbf{Fact}: wealth-output can deviate from capital-output.\\[0.4em]
+\textbf{Interpretation}: valuation, land, and housing matter beyond productive capital.\\[0.4em]
+\textbf{Model implication}: asset-market structure matters for distribution and policy.
+\end{columns}
+\end{frame}
+
+\begin{frame}{Fact 3: Return on Capital}
+\begin{columns}[T]
+\column{0.56\textwidth}
+\includegraphics[width=\linewidth]{17108034-9421-4dd7-a201-7af448ab5827-046_641_813_1291_657}
+\column{0.44\textwidth}
+\textbf{Fact}: no dramatic long-run trend in average returns.\\[0.4em]
+\textbf{Interpretation}: user cost is not collapsing over the sample.\\[0.4em]
+\textbf{Model implication}: steady-state calibration with stable capital shares is plausible.
+\end{columns}
+\end{frame}
+
+\begin{frame}{Fact 4: Labor Input Trends}
+\begin{columns}[T]
+\column{0.56\textwidth}
+\includegraphics[width=\linewidth]{17108034-9421-4dd7-a201-7af448ab5827-047_519_1301_1383_412}
+\column{0.44\textwidth}
+\textbf{Fact}: hours per person show long-run decline and cyclical movement.\\[0.4em]
+\textbf{Interpretation}: participation, employment, and intensive margin all matter.\\[0.4em]
+\textbf{Model implication}: labor supply and labor market frictions are essential.
+\end{columns}
+\end{frame}
+
+\begin{frame}{Fact 5: Hours and Wage Growth}
+\begin{columns}[T]
+\column{0.56\textwidth}
+\includegraphics[width=\linewidth]{17108034-9421-4dd7-a201-7af448ab5827-048_774_1295_253_414}
+\column{0.44\textwidth}
+\textbf{Fact}: hours trend down while real wages trend up over long horizons.\\[0.4em]
+\textbf{Interpretation}: income and substitution effects jointly shape labor supply.\\[0.4em]
+\textbf{Model implication}: preference specification matters for balanced-growth hours.
+\end{columns}
+\end{frame}
+
+\begin{frame}{Fact 6: Labor Productivity Growth}
+\begin{columns}[T]
+\column{0.56\textwidth}
+\includegraphics[width=\linewidth]{17108034-9421-4dd7-a201-7af448ab5827-053_514_1303_249_412}
+\column{0.44\textwidth}
+\textbf{Fact}: productivity grows with persistent medium-run variation.\\[0.4em]
+\textbf{Interpretation}: trend and cyclical components both matter.\\[0.4em]
+\textbf{Model implication}: shocks + propagation mechanisms are required.
+\end{columns}
+\end{frame}
+
+\begin{frame}{Fact 6b: Cross-Country Productivity}
+\begin{columns}[T]
+\column{0.56\textwidth}
+\includegraphics[width=\linewidth]{17108034-9421-4dd7-a201-7af448ab5827-054_768_1301_253_412}
+\column{0.44\textwidth}
+\textbf{Fact}: countries share trend growth but differ in levels and timing.\\[0.4em]
+\textbf{Interpretation}: institutions, technology adoption, and policy differ.\\[0.4em]
+\textbf{Model implication}: convergence is conditional, not automatic.
+\end{columns}
+\end{frame}
+
+\begin{frame}{Fact 6c: TFP Measures}
+\begin{columns}[T]
+\column{0.56\textwidth}
+\includegraphics[width=\linewidth]{17108034-9421-4dd7-a201-7af448ab5827-054_515_1293_1327_416}
+\column{0.44\textwidth}
+\textbf{Fact}: TFP growth is positive but volatile.\\[0.4em]
+\textbf{Interpretation}: productivity is a key source of macro fluctuations.\\[0.4em]
+\textbf{Model implication}: technology process specification is central in DSGE work.
+\end{columns}
+\end{frame}
+
+\begin{frame}{Fact 7: Expenditure Shares}
+\begin{columns}[T]
+\column{0.56\textwidth}
+\includegraphics[width=\linewidth]{17108034-9421-4dd7-a201-7af448ab5827-056_517_1293_253_416}
+\column{0.44\textwidth}
+\textbf{Fact}: consumption-output ratio moves over time.\\[0.4em]
+\textbf{Interpretation}: saving and investment shares are not constants year by year.\\[0.4em]
+\textbf{Model implication}: transition dynamics are quantitatively important.
+\end{columns}
+\end{frame}
+
+\begin{frame}{Fact 8: Factor Shares in the U.S.}
+\begin{columns}[T]
+\column{0.56\textwidth}
+\includegraphics[width=\linewidth]{17108034-9421-4dd7-a201-7af448ab5827-058_517_1293_253_416}
+\column{0.44\textwidth}
+\textbf{Fact}: capital and labor shares are broadly stable over long spans.\\[0.4em]
+\textbf{Interpretation}: Cobb-Douglas benchmark remains informative.\\[0.4em]
+\textbf{Model implication}: use share-based calibration as a first pass.
+\end{columns}
+\end{frame}
+
+\begin{frame}{Fact 8b: Labor Share Drift}
+\begin{columns}[T]
+\column{0.56\textwidth}
+\includegraphics[width=\linewidth]{17108034-9421-4dd7-a201-7af448ab5827-058_779_1299_1153_414}
+\column{0.44\textwidth}
+\textbf{Fact}: labor share declines in recent decades in many economies.\\[0.4em]
+\textbf{Interpretation}: markups, technology, and composition effects are candidates.\\[0.4em]
+\textbf{Model implication}: constant-share assumptions require robustness checks.
+\end{columns}
+\end{frame}
+
+\begin{frame}{Global Labor Share}
+\begin{columns}[T]
+\column{0.56\textwidth}
+\includegraphics[width=\linewidth]{17108034-9421-4dd7-a201-7af448ab5827-059_517_1295_253_414}
+\column{0.44\textwidth}
+\textbf{Fact}: labor share decline appears in global aggregates too.\\[0.4em]
+\textbf{Interpretation}: structural forces are broad, not purely country-specific.\\[0.4em]
+\textbf{Model implication}: open-economy and firm-heterogeneity channels matter.
+\end{columns}
+\end{frame}
+
+\section{Synthesis and Next Step}
+
+\begin{frame}{Synthesis}
+\begin{block}{Workflow for the Course}
+Measurement $\rightarrow$ Stylized Facts $\rightarrow$ Theory $\rightarrow$ Quantitative Evaluation $\rightarrow$ Policy
+\end{block}
+\vspace{0.6em}
+\begin{itemize}
+  \item Macro is a cumulative conversation between data and theory.
+  \item Models are judged by disciplined fit to moments and mechanisms.
+  \item Policy advice inherits the strengths and limits of measurement.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bridge to Lecture 2: Solow Model}
+\begin{itemize}
+  \item Why can $K/Y$ remain stable while output grows over time?
+  \item What drives long-run growth in income per capita?
+  \item Do poorer economies converge to richer ones, and under which conditions?
+\end{itemize}
+\begin{alertblock}{Next Lecture}
+We formalize these questions in Chapter 3 using the Solow model and its dynamic system.
+\end{alertblock}
+\end{frame}
+
+\appendix
+\section{Appendix}
+
+\begin{frame}{A1. CES and Tornqvist Price Index Intuition}
+\hypertarget{apx-cpi}{}
+\begin{itemize}
+  \item A superlative index approximates true cost-of-living changes better than fixed-base Laspeyres.
+  \item Tornqvist uses average expenditure shares and log price changes:
+\[
+\Delta \ln P_t \approx \sum_i \bar{s}_{i,t} \Delta \ln p_{i,t}.
+\]
+  \item In CES settings, exact price indices have explicit aggregator forms.
+\end{itemize}
+\backbutton{main-price}
+\end{frame}
+
+\begin{frame}{A2. Value-Added Accounting Example}
+\hypertarget{apx-valueadded}{}
+\begin{itemize}
+  \item Firm A sells unfinished car body for 20; Firm B paints and sells final car for 30.
+  \item Gross sales sum to 50, but GDP contribution is only value added: $20 + (30-20)=30$.
+  \item Value-added accounting prevents counting intermediate transactions twice.
+\end{itemize}
+\backbutton{main-gdpid}
+\end{frame}
+
+\begin{frame}{A3. Growth Accounting in Continuous Time}
+\hypertarget{apx-growthacct}{}
+\begin{itemize}
+  \item Start from $Y=F(K,L,t)$ and totally differentiate.
+  \item Under competitive pricing and CRS:
+\[
+\frac{\dot Y}{Y}=\alpha\frac{\dot K}{K} + (1-\alpha)\frac{\dot L}{L} + \text{TFP growth}.
+\]
+  \item TFP growth is the residual after accounting for measured input growth.
+\end{itemize}
+\backbutton{main-growthacct}
+\end{frame}
+
+\begin{frame}{A4. Why Calibration?}
+\hypertarget{apx-calib}{}
+\begin{itemize}
+  \item Choose functional forms and parameters disciplined by micro evidence.
+  \item Match long-run macro moments (shares, growth rates, volatility profiles).
+  \item Then evaluate model mechanisms and policy counterfactuals quantitatively.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A5. Data Caveats for Macro Work}
+\hypertarget{apx-caveats}{}
+\begin{itemize}
+  \item PPP versus market exchange-rate comparisons.
+  \item Chain-weight revisions can alter historical growth decompositions.
+  \item Labor-share and capital-income definitions vary across datasets.
+\end{itemize}
+\end{frame}
+
+\end{document}

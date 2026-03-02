@@ -1,0 +1,1283 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+
+\usetheme{SimplePlus}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\graphicspath{{../self-material/book/part-1/images/}}
+
+\title{Macroeconomics PhD Intro\\Lecture 2: The Solow Model}
+\subtitle{Dynamics, Growth, Convergence, and Propagation}
+\author{Swapnil Singh}
+\institute{Lietuvos Bankas \and Kaunas University of Technology}
+\date{Spring 2026}
+
+\newcommand{\apxbutton}[1]{\hfill\hyperlink{#1}{\beamerbutton{Appendix}}}
+\newcommand{\backbutton}[1]{\hfill\hyperlink{#1}{\beamerbutton{Back}}}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Learning Goals}
+\begin{itemize}
+  \item Build the Solow model from assumptions to dynamics.
+  \item Derive steady states, balanced growth, and convergence speed.
+  \item Connect theory to facts on growth, returns, and factor shares.
+  \item Use the model for impulse responses and log-linear analysis.
+  \item Understand how the Solow framework serves as the core of virtually all modern business-cycle models.
+\end{itemize}
+\end{frame}
+
+%% ============================================================
+%% MOTIVATION
+%% ============================================================
+
+\begin{frame}{Motivation: The Puzzle of the Stable Capital-Output Ratio}
+One of the central long-run economic facts is the stability of the capital-output ratio $K_t/Y_t$ over time: capital is roughly \textbf{three times annual GDP} in most advanced economies.
+
+\medskip
+Earlier growth theories (Harrod-Domar) took this stability as a \emph{technological} assumption---they simply built it into the model. But capital is only one production input. Production can be organized in many ways: highly capital-intensive or highly labor-intensive. Given the many possibilities, it is \textbf{not obvious} why $K_t/Y_t$ should be nearly constant at the macro level.
+
+\medskip
+\begin{block}{Solow's Starting Point}
+Reconcile the stable capital-output ratio with the \emph{substitutability} of capital and labor. This reconciliation gave rise to:
+\begin{enumerate}
+  \item A framework for analyzing macroeconomic dynamics.
+  \item Systematic methods for measuring technological change (growth accounting).
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}{What the Solow Model Will Deliver}
+The aggregate production function has three variables that can affect GDP growth: technology $A_t$, capital $K_t$, and labor $L_t$. The Solow model focuses on the \textbf{endogenous accumulation of capital} $K_t$.
+
+\medskip
+We will see that $K_t$ reacts not only to the saving rate $s$ but also to $A_t$ and $L_t$. After solving the model (which delivers a stable $K/Y$ ratio), we focus on two main takeaways:
+
+\begin{enumerate}
+  \item The fundamental source of long-run growth in per capita income is the growth in $A_t$.
+  \item If all parameter values are common across economies, different countries converge to the same income per capita---both in level and growth rate---in the long run.
+\end{enumerate}
+
+\begin{block}{Road Map}
+Basic model $\to$ steady state and dynamics $\to$ growing economy $\to$ prices and shares $\to$ convergence speed $\to$ business cycles and IRFs $\to$ log-linearization.
+\end{block}
+\end{frame}
+
+\begin{frame}{Stylized Facts to Keep in Mind}
+\begin{itemize}
+  \item \textbf{Fact 1:} The capital-output ratio $K_t/Y_t$ is roughly stable over long horizons (approximately 3 in the U.S.).
+  \item \textbf{Fact 2:} GDP per capita grows persistently at a roughly constant rate in advanced economies.
+  \item \textbf{Fact 3:} The return to physical capital has been nearly constant over time.
+  \item \textbf{Fact 4:} Factor shares (capital share $\approx 1/3$, labor share $\approx 2/3$) are roughly stable in the long run.
+  \item \textbf{Fact 5:} There is conditional convergence across similar economies, but not strong unconditional convergence across all countries.
+\end{itemize}
+
+\medskip
+The Solow model will account for all five of these facts with a single, parsimonious framework.
+\end{frame}
+
+%% ============================================================
+\section{Basic Solow Model}
+%% ============================================================
+
+\begin{frame}{Technology and Assumptions}
+We start with the simplest version: no technological progress, no population growth.
+
+\begin{block}{Aggregate Production Function}
+\[
+Y_t = F(K_t,L_t)
+\]
+\end{block}
+We interpret $Y_t$ as GDP. The function $F(K,L)$ satisfies:
+\begin{enumerate}
+  \item $F(K,L)$ is strictly increasing in both $K$ and $L$.
+  \item $F(K,L)$ is strictly quasiconcave (strictly convex isoquants).
+  \item Constant returns to scale: $F(cK,cL) = cF(K,L)$ for any $c>0$.
+  \item $F(0,L)=0$: no output without capital.
+  \item Inada conditions: $\lim_{K\to 0} F_1(K,L) = \infty$ and $\lim_{K\to \infty} F_1(K,L) = 0$.
+\end{enumerate}
+We also assume $F$ is twice continuously differentiable, so that FOCs generate continuous functions.
+\end{frame}
+
+\begin{frame}{Why These Assumptions Matter}
+\begin{itemize}
+  \item \textbf{CRS} allows reduction to a per-worker (or per-efficiency-worker) system---we collapse an $n$-dimensional problem into a one-dimensional difference equation.
+  \item \textbf{Diminishing marginal product of capital} (from strict quasiconcavity) generates mean reversion of $k_t$: rich economies grow slower, poor economies grow faster.
+  \item \textbf{Inada conditions} guarantee an interior steady state. They are stronger than strictly necessary---it suffices that $\lim_{k\to 0} f'(k) > \delta/s$ and $\lim_{k\to\infty} f'(k) < \delta/s$---but they simplify the exposition.
+  \item \textbf{Strict quasiconcavity} gives well-behaved substitution between factors: isoquants are smooth and convex.
+\end{itemize}
+\begin{block}{Economic Logic}
+At low $k$, the marginal product of capital is high, so investment return is high and capital grows. At high $k$, the marginal product is low and depreciation pressure dominates, so capital shrinks. The economy gravitates toward an intermediate steady state.
+\end{block}
+\end{frame}
+
+\begin{frame}{What Does ``Neoclassical'' Mean Here?}
+\begin{block}{Neoclassical Production Side}
+\begin{itemize}
+  \item Smooth substitution between capital and labor (convex isoquants).
+  \item Diminishing marginal products for each input.
+  \item Constant returns to scale at the aggregate level.
+  \item Competitive pricing: factors paid their marginal products.
+\end{itemize}
+\end{block}
+\begin{itemize}
+  \item \textbf{Dynamic implication:} Strong convergence force through diminishing returns---the economy always returns to its steady state.
+  \item \textbf{Empirical implication:} Disciplined mapping from factor shares and growth facts to structural parameters ($\alpha$, $\delta$, etc.).
+  \item \textbf{Contrast with Harrod-Domar:} Fixed proportions (Leontief) technology implied knife-edge instability. The neoclassical substitutability of inputs removes this instability entirely.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Per-Capita Representation}
+\hypertarget{m-a1}{}
+In the basic model, population and hours per capita are both constant and normalized to 1. Therefore:
+\begin{itemize}
+  \item Define per-worker (= per-capita) variables: $y_t \equiv Y_t/L_t$, $k_t \equiv K_t/L_t$.
+  \item By CRS: $Y_t/L_t = F(K_t/L_t, 1)$.
+  \item Define $f(k) \equiv F(k,1)$. Then:
+\end{itemize}
+\[
+y_t = f(k_t) \tag{3.1}
+\]
+The intensive-form production function $f(\cdot)$ inherits all the properties of $F$: it is strictly increasing, strictly concave, and satisfies the Inada conditions in $k$.
+
+\medskip
+\textbf{Key point:} Because of the normalization $L_t=1$, per-capita and aggregate variables are the same in the basic model. The distinction will matter once we introduce population growth.
+\apxbutton{a1}
+\end{frame}
+
+\begin{frame}{Capital Accumulation and Goods Market}
+The second centerpiece of the Solow model is the equation describing the evolution of capital:
+\begin{block}{Capital Accumulation}
+\[
+k_{t+1} = i_t + (1-\delta)k_t \tag{3.2}
+\]
+\end{block}
+where $i_t$ is investment and $\delta \in (0,1)$ is capital's depreciation rate. The existing capital stock loses value $\delta k_t$ while being used.
+
+\begin{block}{Goods Market Clearing}
+\[
+y_t = c_t + i_t \tag{3.3}
+\]
+\end{block}
+Output is either consumed or invested. We implicitly assume goods are homogeneous---they can be used for both consumption and investment. Because output equals total income, total saving must equal total investment. (In an open economy with trade, this need not hold.)
+\end{frame}
+
+\begin{frame}{Saving Rule and Fundamental Equation}
+\hypertarget{m-a2}{}
+Instead of explicitly modeling consumption-saving decisions, the Solow model assumes consumers mechanically save a constant fraction of income:
+\begin{block}{Behavioral Closure}
+\[
+i_t = s y_t, \quad s \in (0,1) \tag{3.4}
+\]
+\end{block}
+This is the simplifying assumption that will be relaxed in Chapter 4, where saving arises from optimizing behavior.
+
+\medskip
+Inserting (3.4) into (3.2) and using (3.1):
+\begin{block}{Fundamental Solow Equation}
+\[
+k_{t+1} = (1-\delta)k_t + s f(k_t) \tag{3.5}
+\]
+\end{block}
+This difference equation is the \textbf{heart of the Solow model}. It expresses the entire dynamics of capital as a function of one endogenous variable $k_t$ and three exogenous objects: $\delta$, $s$, and $f$.
+\apxbutton{a2}
+\end{frame}
+
+\begin{frame}{Economic Meaning of the Fundamental Equation}
+\[
+k_{t+1} = \underbrace{(1-\delta)k_t}_{\text{surviving capital}} + \underbrace{s f(k_t)}_{\text{new investment}}
+\]
+
+\begin{itemize}
+  \item The only endogenous variable on the RHS is $k_t$. Given $k_0$, the entire future path $\{k_{t+1}\}_{t=0}^{\infty}$ is determined.
+  \item Once we have the capital path, all other aggregates follow immediately:
+\end{itemize}
+\begin{block}{Immediate Implications}
+\[
+y_t=f(k_t),\qquad i_t=s f(k_t),\qquad c_t=(1-s)f(k_t)
+\]
+Transitional dynamics of output, investment, and consumption are all inherited from the path of $k_t$. This is the power of the one-dimensional state representation.
+\end{block}
+\end{frame}
+
+%% ============================================================
+\section{Steady State and Dynamics}
+%% ============================================================
+
+\begin{frame}{Steady State Definition}
+A \textbf{steady state} is a situation where $k_t$ is constant over time: $k_t = \bar{k}$ for all $t$. From (3.5):
+\begin{block}{Steady-State Condition}
+\[
+\bar{k} = (1-\delta)\bar{k} + s f(\bar{k})
+\quad\Longrightarrow\quad
+\delta \bar{k} = s f(\bar{k})
+\]
+\end{block}
+\begin{itemize}
+  \item In steady state, investment exactly replaces depreciation: $i = \delta \bar{k}$.
+  \item All variables are constant: $\bar{y} = f(\bar{k})$, $\bar{c} = (1-s)f(\bar{k})$, $\bar{i} = sf(\bar{k})$.
+  \item No growth in the basic model---the economy simply sits at $\bar{k}$ forever.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Existence and Uniqueness of the Steady State}
+\hypertarget{m-a3}{}
+To see that a unique positive $\bar{k}$ exists, plot $\delta k$ and $sf(k)$ against $k$:
+\begin{itemize}
+  \item $\delta k$ is a straight line through the origin with slope $\delta$.
+  \item $sf(k)$ is strictly increasing and strictly concave, reflecting diminishing returns.
+  \item Near $k=0$: the Inada condition $f'(0)=\infty$ implies $sf(k)$ has infinite slope, so it starts above $\delta k$.
+  \item As $k\to\infty$: the Inada condition $f'(\infty)=0$ implies $sf(k)$ eventually grows slower than $\delta k$.
+  \item These two curves must cross exactly once at a positive $\bar{k}$.
+\end{itemize}
+
+\medskip
+\textbf{Note:} The Inada conditions are stronger than necessary. It suffices that $\lim_{k\to 0} f'(k) > \delta/s$ (existence) and $\lim_{k\to\infty} f'(k) < \delta/s$ (uniqueness).
+\apxbutton{a3}
+\end{frame}
+
+\begin{frame}{Cobb-Douglas Closed Form}
+\hypertarget{m-a4}{}
+A particularly useful production function is Cobb-Douglas: $F(K,L)=K^{\alpha}L^{1-\alpha}$, so $f(k)=k^{\alpha}$ with $\alpha\in(0,1)$. This satisfies all our assumptions, including Inada conditions.
+
+\begin{block}{Analytical Steady State}
+From $\delta\bar{k} = s\bar{k}^{\alpha}$:
+\[
+\bar{k}=\left(\frac{s}{\delta}\right)^{\frac{1}{1-\alpha}} \tag{3.6}
+\]
+\end{block}
+\begin{itemize}
+  \item $\bar{k}$ is increasing in $s$: higher saving $\Rightarrow$ more investment $\Rightarrow$ larger capital stock.
+  \item $\bar{k}$ is decreasing in $\delta$: faster depreciation $\Rightarrow$ more capital lost each period $\Rightarrow$ lower steady state.
+  \item Because $\bar{y}=f(\bar{k})=\bar{k}^{\alpha}$, steady-state output is also increasing in $s$ and decreasing in $\delta$.
+\end{itemize}
+\apxbutton{a4}
+\end{frame}
+
+\begin{frame}{Steady-State Capital-Output Ratio}
+\hypertarget{m-a6}{}
+Going back to our motivating fact: in the Cobb-Douglas case, the steady-state $k/y$ ratio is:
+\begin{block}{Key Ratio}
+\[
+\frac{\bar{k}}{\bar{y}} = \frac{s}{\delta}
+\]
+\end{block}
+\begin{itemize}
+  \item In the basic model, $k_t/y_t$ is trivially constant in steady state (all variables are constant).
+  \item But as we will see, even in a \emph{growing} economy where both $k_t$ and $y_t$ increase over time, this ratio eventually stabilizes---matching the data.
+  \item $\bar{k}/\bar{y}$ is larger when $s$ is larger (more saving builds up capital relative to output).
+  \item $\bar{k}/\bar{y}$ is smaller when $\delta$ is larger (faster depreciation erodes the stock).
+  \item With $s\approx 0.2$ and $\delta\approx 0.05$, we get $\bar{k}/\bar{y}\approx 4$, broadly consistent with U.S.\ data.
+\end{itemize}
+\apxbutton{a6}
+\end{frame}
+
+\begin{frame}{Comparative Statics in Elasticity Form}
+\hypertarget{m-a18}{}
+\begin{block}{From $\bar{k}=(s/\delta)^{1/(1-\alpha)}$}
+\[
+\frac{\partial \ln \bar{k}}{\partial \ln s}=\frac{1}{1-\alpha},
+\qquad
+\frac{\partial \ln \bar{k}}{\partial \ln \delta}=-\frac{1}{1-\alpha}
+\]
+\end{block}
+\begin{itemize}
+  \item With $\alpha=1/3$: a 1\% increase in $s$ raises $\bar{k}$ by $1.5\%$.
+  \item Output level response: $\partial \ln \bar{y}/\partial \ln s = \alpha/(1-\alpha)$.
+  \item With $\alpha=1/3$: a 1\% increase in $s$ raises $\bar{y}$ by only $0.5\%$---diminishing returns dampen the output response.
+  \item Higher curvature (lower $\alpha$) weakens sensitivity: with strong diminishing returns, the extra capital produces little extra output.
+\end{itemize}
+\apxbutton{a18}
+\end{frame}
+
+\begin{frame}{Global Dynamics: Cobweb Diagram}
+\begin{center}
+\includegraphics[scale=0.25]{17108034-9421-4dd7-a201-7af448ab5827-074_826_1066_631_552}
+\end{center}
+\end{frame}
+
+\begin{frame}{Proof Sketch of Monotone Convergence}
+\hypertarget{m-a5}{}
+Suppose $k_t < \bar{k}$. We show:
+\begin{enumerate}
+  \item $k_{t+1} > k_t$: Because $k_t < \bar{k}$, we have $sf(k_t) > \delta k_t$ (the investment curve is above the depreciation line), so $k_{t+1} - k_t = sf(k_t) - \delta k_t > 0$.
+  \item $k_{t+1} < \bar{k}$: Because $k_t < \bar{k}$ and the RHS of (3.5) is increasing in $k_t$, the value at $k_t$ is less than the value at $\bar{k}$, which equals $\bar{k}$.
+\end{enumerate}
+
+Therefore $k_t < k_{t+1} < \bar{k}$. Repeating: the sequence $\{k_t\}$ is monotone increasing and bounded above by $\bar{k}$.
+
+\medskip
+By the \textbf{Monotone Convergence Theorem}, the sequence has a limit. The limit must satisfy the steady-state equation, and since the steady state is unique, the limit is $\bar{k}$.
+
+\medskip
+The symmetric argument for $k_t > \bar{k}$ gives a monotone decreasing sequence bounded below by $\bar{k}$.
+\apxbutton{a5}
+\end{frame}
+
+\begin{frame}{Convergence Intuition: Two Opposing Forces}
+Rewrite the capital accumulation equation as:
+\[
+k_{t+1} - k_t = \underbrace{sf(k_t)}_{\text{investment force}} - \underbrace{\delta k_t}_{\text{depreciation force}}
+\]
+\begin{itemize}
+  \item When $k_t$ is \textbf{small}: output per unit of capital $f(k_t)/k_t$ is large (diminishing returns). The constant saving rate implies large gross investment relative to the capital stock. Investment force wins.
+  \item When $k_t$ is \textbf{large}: output per unit of capital is small. Gross investment cannot cover total depreciation $\delta k_t$. Depreciation force wins.
+\end{itemize}
+
+In growth-rate form:
+\begin{block}{Growth Rate of Capital}
+\[
+\frac{k_{t+1}-k_t}{k_t} = \frac{s f(k_t)}{k_t} - \delta
+\]
+\end{block}
+Since $f''(k)<0$ and $f(0)=0$, the average product $f(k)/k$ is decreasing in $k$. This generates the negative relationship between the growth rate and the level---the engine of convergence.
+\end{frame}
+
+\begin{frame}{Cobweb Method: General Setup}
+\begin{block}{One-Dimensional Map}
+\[
+k_{t+1}=G(k_t), \quad G(k)\equiv (1-\delta)k+s f(k)
+\]
+\end{block}
+\begin{itemize}
+  \item Steady states are fixed points: $k^*=G(k^*)$, i.e., where the map crosses the 45-degree line.
+  \item \textbf{Cobweb iteration:} Given $k_t$, move vertically to $G(\cdot)$ to read off $k_{t+1}$, then move horizontally to the 45-degree line to place $k_{t+1}$ on the horizontal axis. Repeat.
+  \item The geometry around intersections determines local dynamics: the slope $G'(k^*)$ tells us everything about local behavior.
+  \item This technique generalizes to any one-dimensional dynamical system---not just Solow.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Local Cobweb Stability: Derivation}
+\hypertarget{m-a17}{}
+Define the deviation $x_t\equiv k_t-k^*$. First-order Taylor expansion around $k^*$:
+\[
+G(k_t)\approx G(k^*)+G'(k^*)(k_t-k^*)
+\]
+Since $G(k^*)=k^*$ (fixed point), we get:
+\[
+x_{t+1}\approx G'(k^*)\,x_t
+\]
+This is a simple linear recursion. Its solution is $x_t = [G'(k^*)]^t \, x_0$, so:
+\begin{itemize}
+  \item If $|G'(k^*)|<1$: deviations shrink $\Rightarrow$ \textbf{locally stable}.
+  \item If $|G'(k^*)|>1$: deviations grow $\Rightarrow$ \textbf{locally unstable}.
+  \item If $|G'(k^*)|=1$: borderline case, higher-order terms matter.
+\end{itemize}
+The \emph{sign} of $G'(k^*)$ determines whether convergence is monotone or oscillatory.
+\apxbutton{a17}
+\end{frame}
+
+\begin{frame}{Cobweb Case 1: Monotone Convergence ($0<G'(k^*)<1$)}
+\begin{block}{Condition}
+\[
+0<G'(k^*)<1
+\]
+\end{block}
+\begin{itemize}
+  \item Deviations keep the same sign and shrink each period: $x_t \to 0$ monotonically.
+  \item Trajectory approaches $k^*$ from one side without overshooting.
+  \item The \textbf{baseline neoclassical Solow model} is always in this case near steady state, because $G'(\bar{k}) = 1-\delta+sf'(\bar{k}) = 1 - \delta(1-\alpha) \in (0,1)$ for standard parameter values.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Cobweb Case 2: Oscillatory Convergence ($-1<G'(k^*)<0$)}
+\begin{block}{Condition}
+\[
+-1<G'(k^*)<0
+\]
+\end{block}
+\begin{itemize}
+  \item The sign of $x_t$ flips each period: the path overshoots the steady state repeatedly.
+  \item But the absolute deviation shrinks, so oscillations are damped.
+  \item Requires a locally \emph{decreasing} map around the fixed point---unusual for the standard Solow model, but can arise with non-standard production functions.
+  \item Think of the bakery metaphor: too many ovens can reduce output if they crowd out workers and dough space.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Cobweb Case 3: Instability ($|G'(k^*)|>1$)}
+\begin{block}{Conditions}
+\[
+G'(k^*)>1 \quad \text{or} \quad G'(k^*)<-1
+\]
+\end{block}
+\begin{itemize}
+  \item Deviations expand over time: local divergence from the fixed point.
+  \item If $G'(k^*)>1$: monotone explosion away from steady state.
+  \item If $G'(k^*)<-1$: paths alternate in sign and explode---or settle into cycles or chaotic dynamics (forever non-monotone behavior that never settles to a repeated pattern).
+  \item This is where multiple steady states and nonlinear attractors can emerge globally.
+\end{itemize}
+\end{frame}
+
+%% ============================================================
+\section{Other Dynamics}
+%% ============================================================
+
+\begin{frame}{Endogenous Growth Case}
+\begin{columns}[T]
+\column{0.45\textwidth}
+\includegraphics[width=\linewidth]{17108034-9421-4dd7-a201-7af448ab5827-076_823_1043_436_509}
+\column{0.55\textwidth}
+Consider the case where $F_1(k,1)$ is uniformly above $\delta/s$. No positive steady state exists---$k_t$ grows without bound.
+\begin{itemize}
+  \item Special case: $y_t = Ak_t$ (linear in capital, $\alpha=1$ in Cobb-Douglas). Known as the ``$AK$ model.''
+  \item Growth is ``endogenous'': it comes from within, not from exogenous technology.
+  \item Two identical countries starting with different $k_0$ remain forever different---the gap in percentage terms stays constant.
+  \item Since labor commands $\approx 2/3$ of income, the $AK$ setup is empirically implausible as a standalone model, but the concept is developed further in Chapter 13 with multiple accumulable inputs.
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Poverty Traps}
+\begin{columns}[T]
+\column{0.4\textwidth}
+\includegraphics[width=\linewidth]{17108034-9421-4dd7-a201-7af448ab5827-077_697_854_268_657}
+\column{0.6\textwidth}
+If $f(k)$ is not globally concave---e.g., there is a middle region with increasing returns (large infrastructure investments, building of transportation networks)---then the curve $k_{t+1}=G(k_t)$ can cross the 45-degree line multiple times.
+
+\begin{itemize}
+  \item In Figure 3.3: three steady states $\bar{k}_1 < \bar{k}_2 < \bar{k}_3$.
+  \item $\bar{k}_1$ and $\bar{k}_3$ are \textbf{stable}; $\bar{k}_2$ is \textbf{unstable}.
+  \item A country starting with $k_0 < \bar{k}_2$ converges to $\bar{k}_1$---the \textbf{poverty trap}.
+  \item To escape: push $k_t$ above $\bar{k}_2$, e.g., by temporarily raising $s$ high enough that $\bar{k}_1$ and $\bar{k}_2$ disappear as intersections.
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Complex Dynamics and Chaos}
+\begin{columns}[T]
+\column{0.4\textwidth}
+\includegraphics[width=\linewidth]{17108034-9421-4dd7-a201-7af448ab5827-078_684_858_266_683}
+\column{0.6\textwidth}
+If $f(k)$ actually \emph{declines} at very high $k$ (more ovens than floor space in the bakery), then $G(k)$ can become decreasing. In this case:
+
+\begin{itemize}
+  \item Convergence, if it occurs at all, will not be monotone.
+  \item $k_t$ can exhibit forever oscillating or even \textbf{chaotic} dynamics: great sensitivity to initial conditions, behavior that never settles to a repeated pattern.
+  \item Mathematically: chaos requires $|G'(k^*)|>1$ with a non-monotone map.
+  \item More esoteric in macroeconomics, but illustrates the full range of dynamics a one-dimensional system can produce.
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Policy Interpretation of Non-Convex Cases}
+\begin{itemize}
+  \item \textbf{Multiple steady states} imply history dependence and threshold effects. Initial conditions determine long-run outcomes.
+  \item A \textbf{temporary policy} that lifts $k_t$ above the unstable threshold can permanently alter the economy's trajectory---a ``big push'' argument for development policy.
+  \item In practice, identifying true macro-level non-convexities (increasing returns at the aggregate level) has proved empirically difficult. The growth literature has not produced robust evidence for the kind of increasing returns needed.
+\end{itemize}
+\begin{block}{Caution}
+These cases are useful for understanding possible mechanisms, but baseline neoclassical concavity remains the empirical benchmark.
+\end{block}
+\end{frame}
+
+%% ============================================================
+\section{Growing Economy}
+%% ============================================================
+
+\begin{frame}{Extending the Model: Why Growth?}
+In the basic model, the long-run outcome is a steady state with \textbf{zero growth}. This is clearly counterfactual---GDP per capita grows persistently in the data.
+
+\medskip
+To address the growth facts from Chapter 2, we extend the model by allowing:
+\begin{enumerate}
+  \item The labor input $L_t$ to grow at rate $n$ (population growth and changes in hours worked).
+  \item The technology level $A_t$ to grow at rate $\gamma$ (labor-augmenting technical change).
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Harrod-Neutral Technical Change}
+The extended production function takes the form:
+\[
+Y_t = F(K_t, A_t L_t)
+\]
+\begin{itemize}
+  \item $A_t L_t$ is the total number of \textbf{efficiency units of labor} (or effective labor).
+  \item Technology $A_t$ improves the labor input: this is \textbf{labor-augmenting} (Harrod-neutral) technical change.
+  \item \textbf{Uzawa's Theorem (1961):} Labor-augmenting technical change is the \emph{only} form of technical progress consistent with exact balanced growth (where aggregate variables grow at constant rates). This is a deep theoretical result, not just a convenient assumption.
+  \item Growth rate of $A_t$: $\gamma$. Growth rate of $L_t$: $n$.
+  \item Note: $n$ has two origins---growing population and changes in hours worked per person (which has been declining in the long run).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Transform to Efficiency Units}
+\hypertarget{m-a7}{}
+The same algebra as in the basic model yields $K_{t+1} = (1-\delta)K_t + sF(K_t, A_tL_t)$.
+
+\begin{block}{Define Capital per Efficiency Unit}
+\[
+\tilde{k}_t \equiv \frac{K_t}{A_t L_t}
+\]
+\end{block}
+Dividing both sides by $A_tL_t$ and noting that $K_{t+1}/(A_tL_t) = (1+\gamma)(1+n)\tilde{k}_{t+1}$:
+\begin{block}{Fundamental Equation with Growth}
+\[
+(1+\gamma)(1+n)\tilde{k}_{t+1}=(1-\delta)\tilde{k}_t + s f(\tilde{k}_t) \tag{3.7}
+\]
+\end{block}
+After normalization by $A_tL_t$, we recover a difference equation very similar to (3.5). The factor $(1+\gamma)(1+n)$ on the LHS reflects the extra ``depreciation'' from growing efficiency units: maintaining a given $\tilde{k}$ is harder when $A$ and $L$ grow.
+\apxbutton{a7}
+\end{frame}
+
+\begin{frame}{Balanced Growth Path}
+\hypertarget{m-a8}{}
+The concept corresponding to the steady state is the \textbf{balanced growth path} (BGP). Along the BGP, $\tilde{k}_t$ is constant and all aggregate variables grow at constant rates.
+
+\medskip
+Setting $\tilde{k}_{t+1}=\tilde{k}_t=\overline{\tilde{k}}$ in (3.7):
+\[
+[(1+\gamma)(1+n) - (1-\delta)]\overline{\tilde{k}} = s f(\overline{\tilde{k}})
+\]
+
+With Cobb-Douglas $f(\tilde{k})=\tilde{k}^{\alpha}$:
+\begin{block}{BGP Capital per Efficiency Unit}
+\[
+\overline{\tilde{k}}=\left(\frac{s}{(1+\gamma)(1+n)+\delta-1}\right)^{\frac{1}{1-\alpha}} \tag{3.8}
+\]
+\end{block}
+Notice that $\gamma$ and $n$ enter like additional depreciation: faster growth in $A$ and $L$ means each unit of untransformed capital must ``make up for'' more effective depreciation.
+\apxbutton{a8}
+\end{frame}
+
+\begin{frame}{Long-Run Growth Rate of Income per Capita}
+\hypertarget{m-a9}{}
+Income per capita is:
+\[
+y_t = \frac{Y_t}{L_t} = f(\tilde{k}_t)\cdot A_t
+\]
+Along the BGP, $f(\tilde{k}_t) = f(\overline{\tilde{k}})$ is constant. Therefore:
+\[
+\frac{y_{t+1}-y_t}{y_t}=\frac{A_{t+1}-A_t}{A_t}=\gamma
+\]
+
+\begin{block}{Fundamental Result}
+The growth rate of per capita income in the long run equals $\gamma$---the rate of technological progress. \textbf{No other parameter affects it.} Encouraging saving (raising $s$) does \emph{not} affect the long-run growth rate.
+\end{block}
+
+This is perhaps the most surprising and important prediction of the Solow model: the engine of sustained growth is exogenous technology, not capital accumulation.
+\apxbutton{a9}
+\end{frame}
+
+\begin{frame}{Transition Dynamics and Convergence}
+In the short run, $\tilde{k}_t$ changes over time, affecting growth:
+\[
+\frac{y_{t+1}-y_t}{y_t} = \frac{f(\tilde{k}_{t+1})}{f(\tilde{k}_t)}(1+\gamma) - 1
+\]
+\begin{itemize}
+  \item If $\tilde{k}_t < \overline{\tilde{k}}$: $\tilde{k}$ is growing, so $f(\tilde{k}_{t+1})/f(\tilde{k}_t) > 1$ and per-capita growth \textbf{exceeds} $\gamma$. The economy is ``catching up.''
+  \item If $\tilde{k}_t > \overline{\tilde{k}}$: $\tilde{k}$ is falling, so per-capita growth is \textbf{below} $\gamma$. The economy is ``winding down'' to its BGP.
+\end{itemize}
+\begin{block}{Convergence Prediction}
+Economies below their own BGP grow faster; economies above it grow slower. Poor countries (relative to their own BGP) grow faster during transition---this is the convergence prediction of the Solow model.
+\end{block}
+Note: this is \emph{conditional} convergence---it requires countries to share the same parameter values.
+\end{frame}
+
+\begin{frame}{Level Effect vs Growth Effect of Saving}
+What happens when $s$ permanently increases?
+\begin{itemize}
+  \item $\overline{\tilde{k}}$ rises (from Eq.\ 3.8), so the \textbf{level} of $y_t$ on the BGP is permanently higher.
+  \item During the transition to the new BGP, per-capita growth temporarily exceeds $\gamma$ as $\tilde{k}_t$ rises toward its new, higher value.
+  \item But once the economy reaches the new BGP, per-capita growth returns to $\gamma$.
+\end{itemize}
+\begin{block}{Core Distinction}
+The Solow model gives strong \textbf{level effects} of saving, but \textbf{no permanent growth effect}. Only changes in $\gamma$ can permanently alter long-run growth.
+\end{block}
+\textbf{Quantitative example:} With our calibration, doubling $s$ from 0.1 to 0.2 raises normalized output by about 17\%. The transition takes decades, temporarily boosting growth, but eventually the economy returns to growing at rate $\gamma$.
+\end{frame}
+
+%% ============================================================
+\section{Prices and Shares}
+%% ============================================================
+
+\begin{frame}{Competitive Firm and Return to Capital}
+\hypertarget{m-a10}{}
+To connect the model to data on returns and factor shares, we need prices. Suppose firms maximize profit under competitive markets:
+\begin{block}{Firm Problem}
+\[
+\max_{K_t,A_tL_t} F(K_t,A_tL_t)-r_tK_t-w_tA_tL_t \tag{3.9}
+\]
+\end{block}
+Here, output is the num\'{e}raire (price = 1). Capital is owned by consumers and rented to firms at rate $r_t$; $w_t$ is the wage per efficiency unit of labor.
+
+\medskip
+From the FOC for $K_t$:
+\[
+r_t = F_1(K_t,A_tL_t) = f'(\tilde{k}_t)
+\]
+Along the BGP, $\tilde{k}_t$ is constant, so $r_t$ is constant---matching the data fact of a roughly stable return to capital.
+\apxbutton{a10}
+\end{frame}
+
+\begin{frame}{Labor Share and Capital Share}
+\hypertarget{m-a11}{}
+The wage per efficiency unit satisfies: $w_t = F_2(K_t,A_tL_t)$.
+
+\medskip
+When $F$ has constant returns to scale, it is homogeneous of degree one. By \textbf{Euler's Theorem} for homogeneous functions:
+\[
+Y_t = K_t F_1(K_t,A_tL_t) + A_tL_t F_2(K_t,A_tL_t)
+\]
+Dividing by $Y_t$:
+\[
+1 = \underbrace{\frac{r_t K_t}{Y_t}}_{\text{capital share}} + \underbrace{\frac{w_t A_t L_t}{Y_t}}_{\text{labor share}}
+\]
+Capital share plus labor share equals one. Along the BGP, since both $r_t$ and $K_t/Y_t$ are constant, the capital share is constant. The labor share, being one minus the capital share, is also constant---matching the data.
+\apxbutton{a11}
+\end{frame}
+
+\begin{frame}{Cobb-Douglas Benchmark for Factor Shares}
+\begin{block}{If $Y_t=K_t^{\alpha}(A_tL_t)^{1-\alpha}$}
+\begin{itemize}
+  \item Capital share $= r_tK_t/Y_t = \alpha$.
+  \item Labor share $= w_tA_tL_t/Y_t = 1-\alpha$.
+  \item These are constant \textbf{even away from the BGP}---at any point on the transition path.
+\end{itemize}
+\end{block}
+This is a special property of Cobb-Douglas. For more general CES production functions $Y=[\alpha K^{\rho}+(1-\alpha)(AL)^{\rho}]^{1/\rho}$, factor shares vary with $K/(AL)$ unless $\rho=0$ (Cobb-Douglas).
+
+\medskip
+\textbf{Key insight:} The Cobb-Douglas form is very convenient because it often simplifies algebra and leads to clean expressions. But this simplicity can be deceiving: it makes fundamental forces going in opposite directions cancel, rendering them invisible.
+\end{frame}
+
+\begin{frame}{Why Share Stability Matters Quantitatively}
+\begin{itemize}
+  \item Factor share data disciplines $\alpha$ directly: from U.S.\ national income accounts, $\alpha\approx 1/3$.
+  \item With Cobb-Douglas, stable shares become a built-in structural feature, not an additional implication to check.
+  \item The value of $\alpha$ pins down convergence speed $\lambda$ and all transition dynamics.
+  \item The substitution elasticity between inputs is exactly 1 for Cobb-Douglas. Empirical estimates at the aggregate level rarely suggest major departures from 1, supporting the functional form choice.
+\end{itemize}
+\begin{block}{Empirical Caveat}
+If measured shares trend strongly (as some recent work on declining labor shares suggests), Cobb-Douglas may require augmentation: human capital, markups, or a non-unit elasticity of substitution.
+\end{block}
+\end{frame}
+
+%% ============================================================
+\section{Convergence Speed and Evidence}
+%% ============================================================
+
+\begin{frame}{Local Linearization: No-Growth Case}
+\hypertarget{m-a12}{}
+To measure how fast the economy converges, linearize the fundamental equation around $\bar{k}$:
+\[
+\Delta k_{t+1}=\left(1-\delta+s f'(\bar{k})\right)\Delta k_t \tag{3.10}
+\]
+where $\Delta k_t \equiv k_t - \bar{k}$. Define the \textbf{convergence speed}:
+\[
+\lambda\equiv \delta-s f'(\bar{k}), \quad\text{so that}\quad
+\frac{k_{t+1}-\bar{k}}{\bar{k}}=(1-\lambda)\frac{k_t-\bar{k}}{\bar{k}}
+\]
+A larger $\lambda$ means faster convergence (the gap shrinks more each period).
+
+\medskip
+For Cobb-Douglas, using the steady-state condition:
+\[
+\lambda=\delta(1-\alpha) \tag{3.11}
+\]
+Convergence is faster when $\alpha$ is small (stronger diminishing returns) and $\delta$ is large. Note: $s$ does \emph{not} affect $\lambda$ in the Cobb-Douglas case---two opposing forces cancel exactly.
+\apxbutton{a12}
+\end{frame}
+
+\begin{frame}{Why $s$ Doesn't Affect $\lambda$ in Cobb-Douglas}
+This deserves explanation because it is a subtle cancellation:
+\begin{enumerate}
+  \item For a given $k_t$, a larger $s$ means more investment, so $k_t$ has a \emph{larger} impact on $k_{t+1}$. This would \emph{slow} convergence (the map is steeper).
+  \item But a larger $s$ also raises the steady-state $\bar{k}$, and at higher $\bar{k}$ the marginal product $f'(\bar{k})$ is smaller (diminishing returns). This makes the map \emph{flatter} near steady state, speeding up convergence.
+\end{enumerate}
+
+With Cobb-Douglas, these two forces exactly offset. For non-Cobb-Douglas production functions, $s$ generally does affect $\lambda$.
+
+\medskip
+\textbf{Lesson:} Cobb-Douglas simplicity can hide important economic forces. Always check whether a result is general or an artifact of the functional form.
+\end{frame}
+
+\begin{frame}{Local Linearization: Growth Case}
+\hypertarget{m-a13}{}
+With population and technology growth, linearizing (3.7) around $\overline{\tilde{k}}$:
+\[
+(1+\gamma)(1+n)\Delta\tilde{k}_{t+1}=\left(1-\delta+s f'(\overline{\tilde{k}})\right)\Delta\tilde{k}_t \tag{3.12}
+\]
+The convergence speed becomes:
+\[
+\lambda = 1-\frac{1-\delta+s f'(\overline{\tilde{k}})}{(1+\gamma)(1+n)}
+\]
+For Cobb-Douglas:
+\[
+\lambda=(1-\alpha)\left(1-\frac{1-\delta}{(1+\gamma)(1+n)}\right) \tag{3.13}
+\]
+Population growth and technology growth both increase $\lambda$ (speed up convergence), because they act like additional effective depreciation.
+\apxbutton{a13}
+\end{frame}
+
+\begin{frame}{Speed Intuition}
+\begin{center}
+\includegraphics[width=0.72\linewidth]{17108034-9421-4dd7-a201-7af448ab5827-082_605_1528_1598_309}
+\end{center}
+\textbf{Figure 3.5:} A higher $\lambda$ means a flatter $G(\cdot)$ curve near the steady state, which geometrically means fewer cobweb steps to reach $\bar{k}$---faster convergence.
+\end{frame}
+
+\begin{frame}{From $\lambda$ to Half-Life}
+The local convergence law is: gap$_{t+1} = (1-\lambda)\cdot$gap$_t$. After $h$ periods:
+\[
+\text{gap}_h = (1-\lambda)^h \cdot \text{gap}_0
+\]
+The \textbf{half-life} $h$ solves $(1-\lambda)^h = 1/2$:
+\[
+h = \frac{\ln(1/2)}{\ln(1-\lambda)} \approx \frac{0.693}{\lambda}
+\]
+\begin{itemize}
+  \item With $\lambda = 0.049$ (model prediction): $h \approx 14$ years.
+  \item With $\lambda = 0.02$ (empirical estimate): $h \approx 35$ years.
+  \item The model predicts faster convergence than we observe---a key tension we will return to.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Convergence in Data: All Countries vs.\ OECD}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{17108034-9421-4dd7-a201-7af448ab5827-084_838_1073_275_537}
+
+{\small Figure 3.6: All countries, 1960--2019. Source: PWT 10.0.}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{17108034-9421-4dd7-a201-7af448ab5827-085_871_1118_300_509}
+
+{\small Figure 3.7: OECD countries, 1960--2019. Source: PWT 10.0.}
+\end{columns}
+
+\medskip
+\begin{itemize}
+  \item \textbf{All countries:} No systematic tendency for poor countries to grow faster---no unconditional convergence. But this does \emph{not} reject the Solow model, which predicts \emph{conditional} convergence.
+  \item \textbf{OECD countries:} Clear negative relationship---poor countries in 1960 grew faster. Barro and Sala-i-Martin (1995) find similar patterns across U.S.\ states, Japanese prefectures, and European regions.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Recent Convergence Patterns and Calibration}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{17108034-9421-4dd7-a201-7af448ab5827-086_836_1078_275_519}
+
+{\small Figure 3.8: All countries, 2000--2019. Source: PWT 10.0.}
+\column{0.5\textwidth}
+\begin{itemize}
+  \item Kremer, Willis, and You (2022) show that unconditional convergence has emerged in recent decades.
+  \item Their argument: policies, institutions, and human capital have become more similar across countries, making underlying parameters more homogeneous.
+\end{itemize}
+\end{columns}
+
+\medskip
+\textbf{Standard calibration:} $\alpha=1/3$, $\gamma=0.02$, $n=0.01$, $\delta\approx 0.046$. This gives $\lambda=0.049$, but the empirical estimate is $\lambda\approx 0.015$--$0.03$ (Barro and Sala-i-Martin, 2004). The model over-predicts convergence speed. Matching the data requires $\alpha\approx 0.73$, which can be rationalized by including human capital in the ``capital'' concept.
+\end{frame}
+
+%% ============================================================
+\section{Business Cycles and IRFs}
+%% ============================================================
+
+\begin{frame}{Solow as Propagation Core}
+The Solow model's usefulness goes far beyond growth theory. Due to its ability to account for the broad features of macroeconomic data, it constitutes the \textbf{core of virtually all modern business-cycle models}.
+
+\begin{itemize}
+  \item Business-cycle theories analyze how the economy reacts to shocks---the ``propagation mechanism.''
+  \item Many cycle models are essentially Solow plus shocks: the state equation remains a modified version of (3.5).
+  \item Three main types of shocks have been studied in the literature:
+  \begin{enumerate}
+    \item Neutral technology shocks (RBC tradition).
+    \item Investment-specific technology shocks.
+    \item Demand disturbances (Keynesian tradition).
+  \end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Shock 1: Neutral Technology (RBC Model)}
+Production function: $y_t = A_t F(k_t, \ell_t)$ with variable labor $\ell_t$.
+\begin{itemize}
+  \item Shock: $A_t$ switches between high and low values. Economy moves toward different steady states.
+  \item With constant $s$ and $\ell$, the model cannot match key business-cycle facts: (i) $\ell_t$ comoves with the cycle, (ii) $i_t$ is more volatile than $y_t$, (iii) $c_t$ is less volatile than $y_t$.
+  \item So we allow $s$ and $\ell$ to react to $(k_t, A_t)$:
+\end{itemize}
+\[
+k_{t+1}=(1-\delta)k_t+s(k_t,A_t)\,A_t\,F(k_t,\ell(k_t,A_t))
+\]
+\textbf{Note:} Under Cobb-Douglas, the distinction between Harrod-neutral ($F(K, AL)$) and Hicks-neutral ($AF(K,L)$) is inessential: $K^{\alpha}(AL)^{1-\alpha} = A^{1-\alpha}K^{\alpha}L^{1-\alpha}$.
+\end{frame}
+
+\begin{frame}{Shock 2: Investment-Specific Technology}
+Goods market clearing becomes $y_t = c_t + i_t/\nu_t$, where $\nu_t$ captures the relative efficiency of producing investment goods:
+\begin{itemize}
+  \item When $\nu_t$ is high, it is cheaper to produce investment goods---one unit of consumption goods yields $\nu_t$ units of investment.
+  \item This reflects a two-sector structure: the investment-goods sector has its own productivity.
+\end{itemize}
+\[
+k_{t+1}=s\nu_tF(k_t,\ell)+(1-\delta)k_t
+\]
+\end{frame}
+
+\begin{frame}{Shock 3: Demand-Driven Disturbance}
+A Keynesian-flavored model: $c_t$ is exogenous and moves over time (the demand shock).
+\begin{itemize}
+  \item Total demand: $c_t + i_t = c_t/(1-s)$ (since $i_t/c_t = s/(1-s)$).
+  \item When demand falls short of full-capacity output $F(k_t, \ell)$, total output is demand-determined and a fraction $u_t$ of the labor force becomes unemployed.
+  \item $u_t = u(c_t, k_t)$ from: $F(k_t, \ell(1-u_t)) = c_t/(1-s)$.
+\end{itemize}
+\[
+k_{t+1}=sF(k_t,\ell(1-u(c_t,k_t)))+(1-\delta)k_t
+\]
+This framework is Keynesian in spirit but begs the question of \emph{why} output can be below full capacity. Understanding the frictions behind demand shortfalls is central to later chapters.
+\end{frame}
+
+\begin{frame}{Impulse-Response Setup}
+\hypertarget{m-a14}{}
+In all three shock models, $k_{t+1}$ is a function of $k_t$ and a shock. To visualize the dynamics, we compute \textbf{impulse-response functions} (IRFs).
+
+\medskip
+\textbf{Setup:} Use the RBC version with Cobb-Douglas, exogenous $s$, and fixed $\ell$:
+\[
+k_{t+1}=sA_tk_t^{\alpha}\ell^{1-\alpha}+(1-\delta)k_t \tag{3.14}
+\]
+\begin{itemize}
+  \item Before period 0: $A_t = \bar{A}$, $k_t$ is near $\bar{k}$.
+  \item At $t=0$: $A_0 = (1+\varepsilon)\bar{A}$ (1\% shock).
+  \item For $t\geq 1$: $A_t = (1+\rho^t\varepsilon)\bar{A}$, with $\rho=0.9$ (persistence).
+  \item Starting from $k_0 = \bar{k}$, simulate (3.14) forward.
+\end{itemize}
+\apxbutton{a14}
+\end{frame}
+
+\begin{frame}{Impulse Response in the Solow-RBC Setup}
+\begin{center}
+\includegraphics[width=0.86\linewidth]{17108034-9421-4dd7-a201-7af448ab5827-091_581_1524_264_305}
+\end{center}
+\textbf{Figure 3.9:} Left: $A_t$ mean-reverts quickly. Right: $k_t$ responds gradually and persistently.
+
+\begin{itemize}
+  \item $k_t$ rises from $\bar{k}=9.066$ to a peak of 9.089 ($+0.25\%$), then gradually returns---a hump-shaped response.
+  \item While $A_t$'s deviation fades by period $\sim$50, capital's response persists much longer.
+  \item The peak capital deviation (0.25\%) is much smaller than the initial shock (1\%)---capital acts as a buffer.
+  \item Eventually $k_t$ returns to $\bar{k}$: the convergence force is active even with shocks.
+\end{itemize}
+\end{frame}
+
+%% ============================================================
+\section{Log-Linearization}
+%% ============================================================
+
+\begin{frame}{Why Log-Linearization?}
+\begin{itemize}
+  \item Converts nonlinear dynamics into tractable \textbf{linear recursions} that can be solved analytically.
+  \item Variables are expressed as \textbf{percent deviations} from steady state---natural economic units.
+  \item Usually accurate for moderate shocks near the BGP. In our calibrated Solow model, the maximum approximation error is about $0.00001$ in units of $K_t$---indistinguishable from the exact solution when plotted.
+  \item This technique is the workhorse of modern quantitative macroeconomics: DSGE models, RBC analysis, and New Keynesian models all rely heavily on log-linearization.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Log-Deviation Definitions}
+An arbitrary variable $x_t$ is expressed as:
+\[
+x_t=\bar{x}e^{\hat{x}_t},\qquad \hat{x}_t\equiv \log\left(\frac{x_t}{\bar{x}}\right) \tag{3.15}
+\]
+Since $\log(x_t/\bar{x}) \approx (x_t-\bar{x})/\bar{x}$ for small deviations (first-order Taylor expansion):
+\[
+\hat{x}_t\approx \frac{x_t-\bar{x}}{\bar{x}} \quad\text{(percent deviation from steady state)}
+\]
+And the exponential approximation:
+\[
+\bar{x}e^{\hat{x}_t}\approx \bar{x}(1+\hat{x}_t) \tag{3.16}
+\]
+These two approximations---replacing $e^{\hat{x}}$ with $1+\hat{x}$ and $\log(1+z)$ with $z$---are the building blocks of log-linearization.
+\end{frame}
+
+\begin{frame}{Linearized Capital Dynamics}
+\hypertarget{m-a15}{}
+Apply (3.15)--(3.16) to the Solow-RBC law (3.14):
+\[
+\bar{k}e^{\hat{k}_{t+1}}=s\bar{A}e^{\hat{A}_t}(\bar{k}e^{\hat{k}_t})^{\alpha}\ell^{1-\alpha}+(1-\delta)\bar{k}e^{\hat{k}_t}
+\]
+First-order approximation around zero deviations, using the steady-state identity $\delta\bar{k}=s\bar{A}\bar{k}^{\alpha}\ell^{1-\alpha}$:
+\begin{block}{Log-Linearized Capital Law}
+\[
+\hat{k}_{t+1}=(1-\delta(1-\alpha))\hat{k}_t + \delta \hat{A}_t \tag{3.18}
+\]
+\end{block}
+\begin{itemize}
+  \item Let $\lambda\equiv \delta(1-\alpha)$---the same convergence speed as in (3.11).
+  \item The log-linearization procedure is essentially the same as the linearization for convergence speed: both apply first-order Taylor approximation to (3.14).
+  \item Capital responds to shocks with coefficient $\delta$ and has persistence $(1-\lambda)$.
+\end{itemize}
+\apxbutton{a15}
+\end{frame}
+
+\begin{frame}{Closed-Form Response and Output Deviation}
+\hypertarget{m-a16}{}
+With $\hat{A}_0=\varepsilon$ and $\hat{A}_t=\rho^t\varepsilon$ for $t\geq 1$, solving (3.18) forward:
+\[
+\hat{k}_{t+1}=\sum_{\tau=0}^{t}\rho^{t-\tau}(1-\lambda)^{\tau}\delta\varepsilon
+= \rho^t \frac{1-\left(\frac{1-\lambda}{\rho}\right)^{t+1}}{1-\frac{1-\lambda}{\rho}}\,\delta\varepsilon
+\]
+Output deviation (from log-linearizing $y_t = A_t k_t^{\alpha}\ell^{1-\alpha}$):
+\[
+\hat{y}_t=\hat{A}_t+\alpha\hat{k}_t
+\]
+Output responds through two channels: the \textbf{direct effect} of the technology shock ($\hat{A}_t$) and the \textbf{propagated effect} through accumulated capital ($\alpha\hat{k}_t$). Log-linearization gives us these closed-form expressions---impossible to obtain from the nonlinear system.
+\apxbutton{a16}
+\end{frame}
+
+\begin{frame}{Reading the IRF Formula}
+\begin{itemize}
+  \item The weights in the sum combine \textbf{shock persistence} $\rho$ and \textbf{capital persistence} $(1-\lambda)$.
+  \item If $\rho>(1-\lambda)$: shock persistence dominates early dynamics. Capital builds up as long as the technology shock is active.
+  \item If $\rho<(1-\lambda)$: capital's own persistence dominates. The hump in capital outlasts the shock itself.
+  \item Larger $\lambda$ (faster convergence) shortens capital memory and compresses the hump-shaped response.
+  \item Output has a direct term ($\hat{A}_t$, which decays as $\rho^t$) plus a propagated term ($\alpha\hat{k}_t$, which decays more slowly). This two-component structure is what generates the characteristic hump shape of output IRFs.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Level-Linearization Alternative}
+When the log formulation is inconvenient, we can linearize in levels:
+\[
+\Delta k_{t+1}=g_k\Delta k_t + g_A\Delta A_t
+\]
+where $g(k_t,A_t)\equiv(1-\delta)k_t+sA_tf(k_t)$, and $g_k$, $g_A$ are partial derivatives evaluated at steady state.
+
+\medskip
+For Cobb-Douglas:
+\begin{itemize}
+  \item $g_k = 1-\delta(1-\alpha)$ (same persistence as in log-linear version).
+  \item $g_A = s^{1/(1-\alpha)}\delta^{-\alpha/(1-\alpha)}\bar{A}^{\alpha/(1-\alpha)}$.
+\end{itemize}
+
+The level-linearization and log-linearization give equivalent results for small deviations. The choice between them is one of convenience: log-deviations give percentage interpretations directly, while level-deviations may be easier when some variables can take negative values.
+\end{frame}
+
+%% ============================================================
+\section{Wrap-up}
+%% ============================================================
+
+\begin{frame}{What the Solow Model Delivers}
+\begin{enumerate}
+  \item A disciplined dynamic core linking capital accumulation to growth, convergence, and the stability of key macroeconomic ratios.
+  \item A clean mapping from parameters ($\alpha$, $s$, $\delta$, $\gamma$, $n$) to steady states, transition speeds, and long-run growth rates.
+  \item Matches five stylized facts: stable $K/Y$, persistent per-capita growth, stable returns to capital, stable factor shares, and conditional convergence.
+  \item A foundation for business-cycle propagation: virtually all modern macro models build on a version of the Solow framework.
+  \item Analytical tractability via log-linearization, enabling closed-form impulse responses and quantitative analysis.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{What the Solow Model Leaves Exogenous}
+\begin{itemize}
+  \item \textbf{Saving behavior:} The saving rate $s$ is assumed constant and exogenous. In reality, saving responds to interest rates, wealth, expectations about future income, etc.
+  \item \textbf{Technology process:} The growth rate $\gamma$ of $A_t$ is taken as given. What drives technological progress? R\&D investment, institutions, human capital?
+  \item \textbf{Labor supply:} In the basic model, labor is fixed. In reality, hours worked respond to wages, taxes, and the business cycle.
+\end{itemize}
+
+\begin{block}{Next Lecture (Chapter 4)}
+Endogenous saving via \textbf{dynamic optimization}. Cass (1965) and Koopmans (1963) add microeconomic foundations: saving arises from rational, forward-looking consumers maximizing lifetime utility. This gives the same long-run implications as Solow, but allows for richer policy analysis and normative evaluation.
+\end{block}
+\end{frame}
+
+%% ============================================================
+\appendix
+\section{Appendix Derivations}
+%% ============================================================
+
+\begin{frame}{A1. Aggregate to Per-Capita Form}
+\hypertarget{a1}{}
+\begin{enumerate}
+  \item Start: $Y_t=F(K_t,L_t)$.
+  \item Define $y_t\equiv Y_t/L_t$, $k_t\equiv K_t/L_t$.
+  \item CRS implies $Y_t/L_t=F(K_t/L_t,1)$: divide both arguments by $L_t$.
+  \item Define $f(k)\equiv F(k,1)$, so $y_t=f(k_t)$.
+\end{enumerate}
+Properties of $f$: Since $F$ is strictly increasing in $K$, so is $f$ in $k$. Since $F$ is CRS, $F_{11}<0$ (given strict quasiconcavity), so $f''<0$. The Inada conditions transfer: $f'(0)=\infty$, $f'(\infty)=0$.
+\backbutton{m-a1}
+\end{frame}
+
+\begin{frame}{A2. Deriving the Fundamental Equation}
+\hypertarget{a2}{}
+\begin{enumerate}
+  \item Capital law: $k_{t+1}=i_t+(1-\delta)k_t$.
+  \item Saving rule: $i_t=s y_t$.
+  \item Production: $y_t=f(k_t)$.
+  \item Substitute (2) and (3) into (1): $k_{t+1}=(1-\delta)k_t+s f(k_t)$.
+\end{enumerate}
+This is a first-order nonlinear difference equation in $k_t$. Given $k_0>0$, it generates the entire time path of the economy.
+\backbutton{m-a2}
+\end{frame}
+
+\begin{frame}{A3. Why Unique Positive Steady State?}
+\hypertarget{a3}{}
+Solve $\delta k = sf(k)$, equivalently $\delta = sf(k)/k = s\cdot\text{APK}(k)$.
+\begin{itemize}
+  \item LHS: constant $\delta > 0$.
+  \item RHS: $s\cdot f(k)/k$. By Inada, $f'(0)=\infty \Rightarrow f(k)/k \to \infty$ as $k\to 0$.
+  \item By concavity, $f(k)/k$ is strictly decreasing in $k$ (since $f''<0$ and $f(0)=0$).
+  \item By Inada, $f'(\infty)=0 \Rightarrow f(k)/k \to 0$ as $k\to\infty$.
+  \item A continuous strictly decreasing function from $\infty$ to $0$ crosses any positive horizontal line exactly once.
+\end{itemize}
+\backbutton{m-a3}
+\end{frame}
+
+\begin{frame}{A4. Derivation of Eq. (3.6)}
+\hypertarget{a4}{}
+With $f(k)=k^{\alpha}$:
+\[
+\delta\bar{k}=s\bar{k}^{\alpha}
+\quad\Rightarrow\quad \bar{k}^{1-\alpha}=\frac{s}{\delta}
+\quad\Rightarrow\quad \bar{k}=\left(\frac{s}{\delta}\right)^{\frac{1}{1-\alpha}}
+\]
+Steady-state output: $\bar{y} = \bar{k}^{\alpha} = (s/\delta)^{\alpha/(1-\alpha)}$.
+
+Steady-state consumption: $\bar{c} = (1-s)\bar{y} = (1-s)(s/\delta)^{\alpha/(1-\alpha)}$.
+\backbutton{m-a4}
+\end{frame}
+
+\begin{frame}{A5. Monotone Convergence Detail}
+\hypertarget{a5}{}
+\textbf{Case $k_t<\bar{k}$:}
+\begin{itemize}
+  \item $G(k_t) > k_t$ because $sf(k_t) > \delta k_t$ when $k<\bar{k}$. So $k_{t+1} > k_t$.
+  \item $G(k_t) < G(\bar{k}) = \bar{k}$ because $G$ is increasing and $k_t < \bar{k}$. So $k_{t+1} < \bar{k}$.
+  \item Combined: $k_t < k_{t+1} < \bar{k}$.
+\end{itemize}
+
+\textbf{Case $k_t>\bar{k}$:} Symmetric argument gives $\bar{k} < k_{t+1} < k_t$.
+
+\medskip
+In both cases, the sequence is monotone and bounded. By the Monotone Convergence Theorem, it has a limit $k^*$. Taking limits in $k_{t+1}=G(k_t)$ gives $k^*=G(k^*)$, and by uniqueness of the steady state, $k^*=\bar{k}$.
+\backbutton{m-a5}
+\end{frame}
+
+\begin{frame}{A6. Derivation of $\bar{k}/\bar{y}=s/\delta$}
+\hypertarget{a6}{}
+From the steady-state condition $\delta\bar{k}=s f(\bar{k}) = s\bar{y}$:
+\[
+\frac{\bar{k}}{\bar{y}}=\frac{s}{\delta}
+\]
+This holds for \emph{any} production function satisfying our assumptions, not just Cobb-Douglas. The capital-output ratio in steady state depends only on the saving rate and the depreciation rate.
+\backbutton{m-a6}
+\end{frame}
+
+\begin{frame}{A7. Derivation of Eq. (3.7)}
+\hypertarget{a7}{}
+Start from $K_{t+1} = (1-\delta)K_t + sF(K_t,A_tL_t)$. Divide both sides by $A_tL_t$:
+\begin{align*}
+\frac{K_{t+1}}{A_tL_t} &= (1-\delta)\frac{K_t}{A_tL_t}+s\frac{F(K_t,A_tL_t)}{A_tL_t}
+\end{align*}
+The LHS is:
+\[
+\frac{K_{t+1}}{A_tL_t} = \frac{A_{t+1}}{A_t}\cdot\frac{L_{t+1}}{L_t}\cdot\frac{K_{t+1}}{A_{t+1}L_{t+1}} = (1+\gamma)(1+n)\tilde{k}_{t+1}
+\]
+By CRS, $F(K_t,A_tL_t)/(A_tL_t) = F(K_t/(A_tL_t),1) = f(\tilde{k}_t)$. Therefore:
+\[
+(1+\gamma)(1+n)\tilde{k}_{t+1}=(1-\delta)\tilde{k}_t+s f(\tilde{k}_t)
+\]
+\backbutton{m-a7}
+\end{frame}
+
+\begin{frame}{A8. Derivation of Eq. (3.8)}
+\hypertarget{a8}{}
+Set $\tilde{k}_{t+1}=\tilde{k}_t=\overline{\tilde{k}}$ in (3.7):
+\[
+(1+\gamma)(1+n)\overline{\tilde{k}}=(1-\delta)\overline{\tilde{k}}+s\overline{\tilde{k}}^{\alpha}
+\]
+\[
+[(1+\gamma)(1+n)-(1-\delta)]\overline{\tilde{k}}=s\overline{\tilde{k}}^{\alpha}
+\]
+\[
+\overline{\tilde{k}}^{1-\alpha}=\frac{s}{(1+\gamma)(1+n)+\delta-1}
+\]
+\[
+\overline{\tilde{k}}=\left(\frac{s}{(1+\gamma)(1+n)+\delta-1}\right)^{\frac{1}{1-\alpha}}
+\]
+\backbutton{m-a8}
+\end{frame}
+
+\begin{frame}{A9. Why Long-Run Per-Capita Growth Is $\gamma$}
+\hypertarget{a9}{}
+\[
+y_t=\frac{Y_t}{L_t}=\frac{F(K_t,A_tL_t)}{L_t} = A_t\cdot\frac{F(K_t,A_tL_t)}{A_tL_t} = A_t\cdot f(\tilde{k}_t)
+\]
+On BGP, $\tilde{k}_t=\overline{\tilde{k}}$ is constant, so $f(\tilde{k}_t)$ is constant. Therefore:
+\[
+\frac{y_{t+1}-y_t}{y_t}=\frac{f(\overline{\tilde{k}})A_{t+1}-f(\overline{\tilde{k}})A_t}{f(\overline{\tilde{k}})A_t}=\frac{A_{t+1}-A_t}{A_t}=\gamma
+\]
+The $f(\overline{\tilde{k}})$ terms cancel, leaving only the growth rate of technology.
+\backbutton{m-a9}
+\end{frame}
+
+\begin{frame}{A10. Deriving $r_t=f'(\tilde{k}_t)$}
+\hypertarget{a10}{}
+\begin{itemize}
+  \item FOC of firm problem: $r_t=F_1(K_t,A_tL_t)$.
+  \item From CRS: $f(\tilde{k}_t) \equiv F(\tilde{k}_t,1) = F(K_t,A_tL_t)/(A_tL_t)$.
+  \item Differentiate both sides with respect to $K_t$:
+\[
+f'(\tilde{k}_t)\cdot\frac{1}{A_tL_t} = \frac{F_1(K_t,A_tL_t)}{A_tL_t}
+\]
+  \item Therefore $F_1(K_t,A_tL_t)=f'(\tilde{k}_t)$, i.e., $r_t = f'(\tilde{k}_t)$.
+\end{itemize}
+\backbutton{m-a10}
+\end{frame}
+
+\begin{frame}{A11. Factor Shares Under CRS}
+\hypertarget{a11}{}
+By Euler's theorem for homogeneous-of-degree-one functions:
+\[
+Y_t=K_tF_1(K_t,A_tL_t)+A_tL_tF_2(K_t,A_tL_t)
+\]
+Divide by $Y_t$:
+\[
+1=\frac{r_tK_t}{Y_t}+\frac{w_tA_tL_t}{Y_t}
+\]
+Hence labor share $= 1 -$ capital share. Both are constant along BGP since $r_t$ and $K_t/Y_t = \tilde{k}_t/f(\tilde{k}_t)$ are both constant when $\tilde{k}_t = \overline{\tilde{k}}$.
+
+\medskip
+Alternative: $w_t = f(\tilde{k}_t) - \tilde{k}_t f'(\tilde{k}_t)$, which is constant when $\tilde{k}_t$ is constant.
+\backbutton{m-a11}
+\end{frame}
+
+\begin{frame}{A12. Deriving Eqs. (3.10)--(3.11)}
+\hypertarget{a12}{}
+Linearize $g(k)=(1-\delta)k+sf(k)$ at $\bar{k}$:
+\[
+\Delta k_{t+1}=g'(\bar{k})\Delta k_t=(1-\delta+s f'(\bar{k}))\Delta k_t
+\]
+Define $\lambda=\delta-s f'(\bar{k})$, so $g'(\bar{k}) = 1-\lambda$.
+
+\medskip
+For Cobb-Douglas: $f'(k)=\alpha k^{\alpha-1}$. At steady state, $s\bar{k}^{\alpha-1} = \delta/\alpha \cdot \alpha = \delta$ (from $s\bar{k}^{\alpha}=\delta\bar{k}$, so $sf'(\bar{k})=s\alpha\bar{k}^{\alpha-1}=\alpha\delta$). Therefore:
+\[
+\lambda=\delta-\alpha\delta=\delta(1-\alpha)
+\]
+\backbutton{m-a12}
+\end{frame}
+
+\begin{frame}{A13. Deriving Eqs. (3.12)--(3.13)}
+\hypertarget{a13}{}
+Linearize the growth-case map $(1+\gamma)(1+n)\tilde{k}_{t+1}=(1-\delta)\tilde{k}_t+sf(\tilde{k}_t)$ around $\overline{\tilde{k}}$:
+\[
+(1+\gamma)(1+n)\Delta\tilde{k}_{t+1}=(1-\delta+s f'(\overline{\tilde{k}}))\Delta\tilde{k}_t
+\]
+The convergence speed:
+\[
+\lambda=1-\frac{1-\delta+s f'(\overline{\tilde{k}})}{(1+\gamma)(1+n)}
+\]
+For Cobb-Douglas, $sf'(\overline{\tilde{k}}) = \alpha[(1+\gamma)(1+n)-1+\delta]$ (from the BGP condition). Substituting:
+\[
+\lambda=(1-\alpha)\left(1-\frac{1-\delta}{(1+\gamma)(1+n)}\right)
+\]
+\backbutton{m-a13}
+\end{frame}
+
+\begin{frame}{A14. IRF Calibration Inputs}
+\hypertarget{a14}{}
+In the chapter illustration:
+\begin{itemize}
+  \item $s=0.2$, $\delta=0.046$, $\alpha=1/3$.
+  \item $\ell=1$, $\bar{A}=1$.
+  \item Initial shock $\varepsilon=0.01$ (1\%), persistence $\rho=0.9$.
+  \item Simulate Eq. (3.14) from $k_0=\bar{k}=(s\bar{A}/\delta)^{1/(1-\alpha)} = (0.2/0.046)^{1.5} \approx 9.066$.
+  \item $A_t = (1+\rho^t\varepsilon)\bar{A}$ for $t=0,1,2,\ldots$
+\end{itemize}
+The implied convergence speed is $\lambda = 0.046 \times 2/3 \approx 0.031$.
+\backbutton{m-a14}
+\end{frame}
+
+\begin{frame}{A15. Derivation of Eq. (3.18)}
+\hypertarget{a15}{}
+Start from the transformed law:
+\[
+\bar{k}e^{\hat{k}_{t+1}}=s\bar{A}e^{\hat{A}_t}(\bar{k}e^{\hat{k}_t})^{\alpha}\ell^{1-\alpha}+(1-\delta)\bar{k}e^{\hat{k}_t}
+\]
+Apply $e^{\hat{x}}\approx 1+\hat{x}$ and $(\bar{k}e^{\hat{k}_t})^{\alpha}\approx \bar{k}^{\alpha}(1+\alpha\hat{k}_t)$:
+\[
+\bar{k}(1+\hat{k}_{t+1})=s\bar{A}\bar{k}^{\alpha}\ell^{1-\alpha}(1+\hat{A}_t)(1+\alpha\hat{k}_t)+(1-\delta)\bar{k}(1+\hat{k}_t)
+\]
+Drop second-order terms ($\hat{A}_t\cdot\hat{k}_t\approx 0$) and use $\delta\bar{k}=s\bar{A}\bar{k}^{\alpha}\ell^{1-\alpha}$:
+\[
+\bar{k}\hat{k}_{t+1}=\delta\bar{k}(\hat{A}_t+\alpha\hat{k}_t)+(1-\delta)\bar{k}\hat{k}_t
+\]
+Divide by $\bar{k}$:
+\[
+\hat{k}_{t+1}=(1-\delta(1-\alpha))\hat{k}_t+\delta\hat{A}_t
+\]
+\backbutton{m-a15}
+\end{frame}
+
+\begin{frame}{A16. Closed-Form Responses}
+\hypertarget{a16}{}
+Given $\hat{A}_t=\rho^t\varepsilon$ and Eq. (3.18), iterate forward from $\hat{k}_0=0$:
+\begin{align*}
+\hat{k}_1 &= \delta\varepsilon \\
+\hat{k}_2 &= (1-\lambda)\delta\varepsilon + \delta\rho\varepsilon \\
+&\;\;\vdots \\
+\hat{k}_{t+1} &= \sum_{\tau=0}^{t}\rho^{t-\tau}(1-\lambda)^{\tau}\delta\varepsilon
+= \rho^t \frac{1-\left(\frac{1-\lambda}{\rho}\right)^{t+1}}{1-\frac{1-\lambda}{\rho}}\,\delta\varepsilon
+\end{align*}
+Output deviation: $\hat{y}_t=\hat{A}_t+\alpha\hat{k}_t = \rho^t\varepsilon + \alpha\hat{k}_t$.
+
+With $\lambda=\delta(1-\alpha)$.
+\backbutton{m-a16}
+\end{frame}
+
+\begin{frame}{A17. Cobweb Stability in Solow Form}
+\hypertarget{a17}{}
+For Solow, $G(k) = (1-\delta)k + sf(k)$, so:
+\[
+G'(k)=1-\delta+s f'(k)
+\]
+At $k^*$, local convergence requires $|G'(k^*)|<1$, i.e.:
+\[
+|1-\delta+s f'(k^*)|<1
+\]
+Since $1-\delta+sf'(k^*)>0$ for reasonable parameters, this simplifies to:
+\[
+1-\delta+s f'(k^*)<1 \quad\Leftrightarrow\quad sf'(k^*)<\delta \quad\Leftrightarrow\quad \lambda = \delta-sf'(k^*)>0
+\]
+In Cobb-Douglas: $\lambda=\delta(1-\alpha)$, so $0<\lambda<1$ for $\alpha\in(0,1)$ and any $\delta\in(0,1)$. Monotone convergence is guaranteed.
+\backbutton{m-a17}
+\end{frame}
+
+\begin{frame}{A18. What Is an Elasticity?}
+\hypertarget{a18}{}
+\begin{block}{General Definition}
+The \textbf{elasticity} of $y$ with respect to $x$ measures the percent change in $y$ per percent change in $x$:
+\[
+\varepsilon_{y,x} \;\equiv\; \frac{\partial y / y}{\partial x / x} \;=\; \frac{\partial y}{\partial x}\cdot\frac{x}{y} \;=\; \frac{\partial \ln y}{\partial \ln x}
+\]
+\end{block}
+\textbf{Why use elasticities instead of plain derivatives?}
+\begin{itemize}
+  \item Elasticities are \textbf{unit-free}: they do not depend on whether capital is measured in dollars, euros, or physical units. A derivative $\partial \bar{k}/\partial s$ has units of ``capital per unit of saving rate,'' which is hard to interpret. An elasticity says: ``a 1\% rise in $s$ raises $\bar{k}$ by $\varepsilon\%$.''
+  \item Elasticities give \textbf{proportional} comparisons: they tell you how large the response is \emph{relative to the starting point}, which is economically more meaningful than the absolute change.
+  \item The $\partial\ln y / \partial\ln x$ representation is especially convenient because many economic relationships become linear in logs (e.g., Cobb-Douglas: $\ln y = \alpha \ln k$).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A18 (cont.). Elasticity Applied to the Solow Steady State}
+\hypertarget{a18b}{}
+Start from $\bar{k}=(s/\delta)^{1/(1-\alpha)}$. Take logs:
+\[
+\ln \bar{k} = \frac{1}{1-\alpha}\left(\ln s - \ln \delta\right)
+\]
+Differentiate with respect to $\ln s$ (holding $\delta$ fixed):
+\[
+\frac{\partial \ln \bar{k}}{\partial \ln s} = \frac{1}{1-\alpha}
+\]
+\textbf{Interpretation:} A 1\% increase in the saving rate raises the steady-state capital stock by $1/(1-\alpha)$ percent.
+
+\medskip
+For output, $\ln \bar{y} = \alpha \ln \bar{k}$, so:
+\[
+\frac{\partial \ln \bar{y}}{\partial \ln s} = \alpha \cdot \frac{1}{1-\alpha} = \frac{\alpha}{1-\alpha}
+\]
+With $\alpha=1/3$: a 1\% rise in $s$ raises $\bar{k}$ by 1.5\% but $\bar{y}$ by only 0.5\%. Diminishing returns to capital attenuate the output response relative to the capital response.
+\backbutton{m-a18}
+\end{frame}
+
+\end{document}
