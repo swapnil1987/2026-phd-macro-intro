@@ -1,0 +1,11 @@
+\beamer@sectionintoc {1}{Motivation}{4}{0}{1}
+\beamer@sectionintoc {2}{4.1 Problem Setup}{6}{0}{2}
+\beamer@sectionintoc {3}{4.1.1 Consumption-Saving Model}{10}{0}{3}
+\beamer@sectionintoc {4}{4.1.2 Neoclassical Growth Model}{13}{0}{4}
+\beamer@sectionintoc {5}{4.2 Sequential Methods: Finite Horizon}{15}{0}{5}
+\beamer@sectionintoc {6}{CRRA and EIS}{25}{0}{6}
+\beamer@sectionintoc {7}{4.3 Sequential Methods: Infinite Horizon}{27}{0}{7}
+\beamer@sectionintoc {8}{4.4 Recursive Methods}{39}{0}{8}
+\beamer@sectionintoc {9}{4.4.6 Dynamics and Convergence}{50}{0}{9}
+\beamer@sectionintoc {10}{Wrap-up}{54}{0}{10}
+\beamer@sectionintoc {11}{Appendix Derivations}{57}{1}{11}

@@ -1,0 +1,1082 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+
+\usetheme{SimplePlus}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\graphicspath{{../self-material/book/part-1/images/}}
+
+\title{Macroeconomics PhD Intro\\Lecture 3: Dynamic Optimization Methods}
+\subtitle{Chapter 4: Sequential and Recursive Methods}
+\author{Swapnil Singh}
+\institute{Lietuvos Bankas \and Kaunas University of Technology}
+\date{Spring 2026}
+
+\newcommand{\apxbutton}[1]{\hfill\hyperlink{#1}{\beamerbutton{Appendix}}}
+\newcommand{\backbutton}[1]{\hfill\hyperlink{#1}{\beamerbutton{Back}}}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Learning Goals}
+\begin{itemize}
+  \item Formulate dynamic optimization problems with states, controls, and feasibility sets.
+  \item Solve finite-horizon models with Kuhn-Tucker conditions and Euler equations.
+  \item Understand infinite-horizon subtleties: boundedness, no-Ponzi condition, and transversality.
+  \item Derive and interpret Bellman equations and policy functions.
+  \item Connect sequential and recursive methods in the neoclassical growth model.
+  \item Build intuition for convergence and balanced growth under optimizing behavior.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Road Map (Following Chapter 4)}
+\begin{enumerate}
+  \item Dynamic optimization setup and two benchmark models.
+  \item Sequential methods with finite horizon.
+  \item Sequential methods with infinite horizon.
+  \item Recursive methods and the Bellman equation.
+  \item Dynamics and convergence in the optimizing neoclassical growth model.
+\end{enumerate}
+
+\begin{block}{Connection to Lecture 2}
+In Solow, saving was exogenous. In this lecture, saving is chosen optimally from primitives.
+\end{block}
+\end{frame}
+
+%% ============================================================
+\section{Motivation}
+%% ============================================================
+
+\begin{frame}{Why Dynamic Optimization?}
+Cass-Koopmans adds micro-foundations to growth: saving/investment become outcomes of rational choice.
+
+\medskip
+\begin{itemize}
+  \item Solow: $i_t=s y_t$ imposed.
+  \item Optimizing growth: $i_t$ implied by Euler equation.
+\end{itemize}
+
+\begin{block}{What Changes?}
+\begin{itemize}
+  \item Positive analysis: richer transition dynamics and policy propagation.
+  \item Normative analysis: welfare comparisons become internally coherent.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Sequential vs Recursive: Conceptual Difference}
+\begin{columns}[T]
+\column{0.49\textwidth}
+\textbf{Sequential}
+\begin{itemize}
+  \item Unknown: entire sequence.
+  \item Method: Kuhn-Tucker/FOCs over time.
+  \item Output: path $\{x_t,y_t\}$.
+\end{itemize}
+
+\column{0.49\textwidth}
+\textbf{Recursive}
+\begin{itemize}
+  \item Unknown: value function $V(\cdot)$.
+  \item Method: functional equation.
+  \item Output: policy rule $x'=g(x)$.
+\end{itemize}
+\end{columns}
+
+\medskip
+Both represent the same economics under standard assumptions.
+\end{frame}
+
+%% ============================================================
+\section{4.1 Problem Setup}
+%% ============================================================
+
+\begin{frame}{Generic Dynamic Optimization Problem (P1)}
+\hypertarget{m-a1}{}
+\[
+\max_{\{y_t,x_{t+1}\}_{t=0}^{T}} \sum_{t=0}^{T} \beta^t \hat{\mathcal{F}}(y_t)
+\]
+subject to
+\[
+x_{t+1}=h(x_t,y_t), \qquad x_{t+1}\in\Gamma(x_t)
+\]
+
+\begin{itemize}
+  \item State: $x_t$ (predetermined stock variable).
+  \item Control: $y_t$ (choice in period $t$).
+  \item Initial condition: $x_0$ given.
+\end{itemize}
+\apxbutton{a1}
+\end{frame}
+
+\begin{frame}{Discounting and Intertemporal Trade-offs}
+\begin{itemize}
+  \item $\beta\in(0,1)$: stationary discount factor.
+  \item Relative welfare weight between dates $t$ and $t+k$: $\beta^k$.
+  \item Dynamic trade-off: reducing current payoff can raise future payoff through state dynamics.
+\end{itemize}
+
+\begin{block}{Interpretation}
+The model separates \textbf{technology/constraints} $\{h,\Gamma\}$ from \textbf{preferences/objective} $\{\hat{\mathcal{F}},\beta\}$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Existence Intuition}
+Sufficient conditions used in Chapter 4:
+\begin{itemize}
+  \item Continuity of objective and transition mappings.
+  \item Feasible set nonempty, closed, bounded.
+  \item Concavity/convexity structure.
+\end{itemize}
+
+\medskip
+\textbf{Why it matters:}
+\begin{itemize}
+  \item A maximum exists (not just a supremum).
+  \item FOCs characterize a unique global solution when problem is convex.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{State-Control Timeline}
+Given $x_t$, choosing $y_t$ determines $x_{t+1}=h(x_t,y_t)$.
+
+\medskip
+\begin{itemize}
+  \item At $t=0$: $x_0$ exogenous, choose $y_0$, get $x_1$.
+  \item At $t=1$: $x_1$ now predetermined, choose $y_1$, get $x_2$.
+  \item Continue recursively.
+\end{itemize}
+
+\begin{block}{Key Distinction}
+Controls are current choices. States are consequences of past choices.
+\end{block}
+\end{frame}
+
+%% ============================================================
+\section{4.1.1 Consumption-Saving Model}
+%% ============================================================
+
+\begin{frame}{Consumption-Saving Model: Primitives}
+\begin{itemize}
+  \item Preferences: $U=\sum_{t=0}^{T}\beta^t u(c_t)$.
+  \item $u'(c)>0$, $u''(c)<0$, and $\lim_{c\to 0}u'(c)=\infty$.
+  \item Endowment income: wage sequence $\{w_t\}$.
+  \item Assets $a_t$ with return $r_t$.
+\end{itemize}
+
+Budget constraint:
+\[
+c_t=w_t+(1+r_t)a_t-a_{t+1}
+\]
+
+Borrowing limit and terminal condition:
+\[
+a_{t+1}\ge \underline{a},\qquad a_{T+1}\ge 0
+\]
+\end{frame}
+
+\begin{frame}{Economic Interpretation of Asset Dynamics}
+\begin{itemize}
+  \item If $a_{t+1}>a_t(1+r_t)+w_t$, consumption is negative (infeasible).
+  \item $a_{t+1}<0$ means borrowing from the future.
+  \item Terminal restriction avoids ``borrow and default'' in the last period.
+\end{itemize}
+
+\begin{block}{Trade-off}
+One unit less consumption today buys $1+r_{t+1}$ more resources tomorrow.
+\end{block}
+\end{frame}
+
+\begin{frame}{Consumption-Saving Problem (P2)}
+\[
+\max_{\{c_t,a_{t+1}\}_{t=0}^{T}}\sum_{t=0}^{T}\beta^t u(c_t)
+\]
+subject to
+\[
+c_t=w_t+(1+r_t)a_t-a_{t+1}
+\]
+\[
+c_t\ge 0,\quad a_{t+1}\ge \underline{a},\quad a_{T+1}\ge 0
+\]
+
+Mapping to (P1): state $x_t=a_t$, control $y_t=c_t$.
+\end{frame}
+
+%% ============================================================
+\section{4.1.2 Neoclassical Growth Model}
+%% ============================================================
+
+\begin{frame}{Neoclassical Growth Model: Setup}
+Production economy (not pure endowment):
+\[
+y_t=f(k_t),\qquad k_{t+1}=(1-\delta)k_t+i_t
+\]
+Resource constraint:
+\[
+c_t+i_t\le y_t
+\]
+Equivalent form:
+\[
+c_t+k_{t+1}\le f(k_t)+(1-\delta)k_t
+\]
+
+\medskip
+Same preferences as consumption-saving model, but return is endogenous through $f'(k)$.
+\end{frame}
+
+\begin{frame}{Planner Problem in the NGM (4.3)}
+\[
+\max_{\{c_t,k_{t+1}\}_{t=0}^{T}}\sum_{t=0}^{T}\beta^t u(c_t)
+\]
+subject to
+\[
+c_t+k_{t+1}\le f(k_t)+(1-\delta)k_t,
+\qquad c_t,k_{t+1}\ge 0
+\]
+
+\begin{block}{Interpretation}
+Competitive equilibrium with complete markets and perfect competition will decentralize this planner allocation (Chapter 5-6 logic).
+\end{block}
+\end{frame}
+
+%% ============================================================
+\section{4.2 Sequential Methods: Finite Horizon}
+%% ============================================================
+
+\begin{frame}{Finite Horizon: Strategy}
+When $T<\infty$, use Kuhn-Tucker conditions.
+
+\medskip
+\textbf{Why this is tractable:}
+\begin{itemize}
+  \item Finite number of unknowns.
+  \item Boundary condition at the terminal date.
+  \item Concavity gives sufficiency of FOCs.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Two-Period Consumption-Saving Example}
+\hypertarget{m-a2}{}
+With $a_0=0$, $\underline{a}=0$, and constant $r$:
+\[
+c_0=w_0-a_1,\qquad c_1=w_1+(1+r)a_1
+\]
+Lifetime budget:
+\[
+c_0+\frac{c_1}{1+r}=w_0+\frac{w_1}{1+r}
+\]
+Borrowing/saving restriction: $a_1\ge 0 \Leftrightarrow w_0-c_0\ge 0$.
+\apxbutton{a2}
+\end{frame}
+
+\begin{frame}{Two-Period Lagrangian and FOCs}
+Lagrangian:
+\[
+\mathcal{L}=u(c_0)+\beta u(c_1)+\mu\left(w_0+\frac{w_1}{1+r}-c_0-\frac{c_1}{1+r}\right)+\lambda(w_0-c_0)
+\]
+FOCs:
+\[
+u'(c_0)-\mu-\lambda=0,
+\qquad
+\beta u'(c_1)-\frac{\mu}{1+r}=0
+\]
+Complementary slackness:
+\[
+\lambda(w_0-c_0)=0,\quad w_0-c_0\ge 0,\quad \lambda\ge 0
+\]
+\end{frame}
+
+\begin{frame}{Euler Equation and Cases}
+If interior ($\lambda=0$):
+\[
+u'(c_0)=\beta(1+r)u'(c_1)
+\]
+
+\begin{itemize}
+  \item $\beta(1+r)=1$: strongest smoothing benchmark.
+  \item High current income and borrowing constraint can generate corner solutions.
+  \item If borrowing bound binds, Euler inequality replaces equality.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Generic T-Period Result (Result 1)}
+Rewrite objective as
+\[
+\max_{\{x_{t+1}\}}\sum_{t=0}^{T}\beta^t\mathcal{F}(x_t,x_{t+1}),\qquad x_{t+1}\in[\underline{x},\gamma(x_t)]
+\]
+Interior Euler equation for $t<T$:
+\[
+\mathcal{F}_2(x_t^*,x_{t+1}^*)+\beta\mathcal{F}_1(x_{t+1}^*,x_{t+2}^*)=0
+\]
+Terminal condition:
+\[
+x_{T+1}^*=\underline{x}
+\]
+
+\medskip
+This is a second-order difference system in the state sequence.
+\end{frame}
+
+\begin{frame}{Finite-Horizon NGM in Sequence Form (P3)}
+\hypertarget{m-a3}{}
+\[
+\max_{\{k_{t+1}\}_{t=0}^{T}}\sum_{t=0}^{T}\beta^t u\left(f(k_t)+(1-\delta)k_t-k_{t+1}\right)
+\]
+subject to
+\[
+k_{t+1}\ge 0
+\]
+
+FOC for $t<T$:
+\[
+-u'(c_t)+\beta u'(c_{t+1})\left[f'(k_{t+1})+1-\delta\right]+\mu_t=0
+\]
+\apxbutton{a3}
+\end{frame}
+
+\begin{frame}{Terminal Condition in Finite-Horizon NGM}
+Final-period FOC:
+\[
+-u'(c_T)+\mu_T=0
+\]
+Because $u'(c_T)>0$, we get $\mu_T>0$, hence by complementary slackness:
+\[
+k_{T+1}=0
+\]
+
+\begin{block}{Intuition}
+Capital after the terminal date has no continuation value, so it is never optimal to leave it unconsumed.
+\end{block}
+\end{frame}
+
+\begin{frame}{Euler Equation for NGM (Interior Dates)}
+For $t<T$, Inada conditions imply interior $k_{t+1}>0$ and $\mu_t=0$:
+\[
+ u'(c_t)=\beta u'(c_{t+1})\left[f'(k_{t+1})+1-\delta\right]
+\]
+with
+\[
+c_t=f(k_t)+(1-\delta)k_t-k_{t+1}
+\]
+
+Unknowns pinned down by: Euler equations + $k_0$ + terminal condition $k_{T+1}=0$.
+\end{frame}
+
+\begin{frame}{Example 4.1: Closed-Form Finite-Horizon Solution}
+Assume:
+\[
+u(c)=\log c,\qquad f(k)=Ak^{\alpha},\qquad \delta=1
+\]
+Then
+\[
+k_{t+1}=\alpha\beta\frac{1-(\alpha\beta)^{T-t}}{1-(\alpha\beta)^{T-t+1}}Ak_t^{\alpha}
+\]
+and
+\[
+c_t=\frac{1-\alpha\beta}{1-(\alpha\beta)^{T-t+1}}Ak_t^{\alpha}
+\]
+
+\textbf{Message:} optimal saving rate is time-varying because horizon is finite.
+\end{frame}
+
+\begin{frame}{Finite-Horizon Intuition: Time-to-Go Effect}
+\begin{itemize}
+  \item Far from terminal date: strong incentive to invest for future periods.
+  \item Near terminal date: investment motive weakens.
+  \item Last period: invest nothing beyond horizon.
+\end{itemize}
+
+\begin{block}{Contrast with Infinite Horizon}
+In stationary infinite-horizon models, rules are time-invariant and depend on the state, not calendar time.
+\end{block}
+\end{frame}
+
+%% ============================================================
+\section{CRRA and EIS}
+%% ============================================================
+
+\begin{frame}{CRRA Utility Class}
+\[
+u(c)=\frac{c^{1-\sigma}-1}{1-\sigma},\qquad \sigma\ge 0,\;\sigma\ne 1
+\]
+Special cases:
+\begin{itemize}
+  \item $\sigma\to 1$: log utility.
+  \item $\sigma>0$: strictly concave preferences.
+  \item $\sigma=0$: linear utility.
+\end{itemize}
+
+CRRA is central because it delivers constant EIS and is compatible with balanced growth.
+\end{frame}
+
+\begin{frame}{Example 4.2: EIS Under CRRA}
+\hypertarget{m-a4}{}
+With linear returns $R_{t,t+s}$, repeated Euler substitution gives
+\[
+\frac{c_{t+s}}{c_t}=\left(\beta^sR_{t,t+s}\right)^{1/\sigma}
+\]
+Hence
+\[
+EIS=\frac{\partial\log(c_{t+s}/c_t)}{\partial\log R_{t,t+s}}=\frac{1}{\sigma}
+\]
+
+\begin{itemize}
+  \item High $\sigma$: lower willingness to tilt consumption intertemporally.
+  \item Low $\sigma$: stronger response to return changes.
+\end{itemize}
+\apxbutton{a4}
+\end{frame}
+
+%% ============================================================
+\section{4.3 Sequential Methods: Infinite Horizon}
+%% ============================================================
+
+\begin{frame}{Why Infinite Horizon?}
+\begin{itemize}
+  \item Stationarity: problem at $t$ has same structure as at $t+1$.
+  \item Useful approximation for long-run macro questions.
+  \item Dynastic interpretation: current generation values descendants.
+\end{itemize}
+
+\medskip
+But infinite horizon requires extra mathematical discipline.
+\end{frame}
+
+\begin{frame}{Infinite-Horizon Pitfall 1: Unbounded Utility}
+Even with $\beta<1$, utility may be ill-defined if feasible consumption grows too fast.
+
+For CRRA with growth $c_t=c_0(1+\gamma)^t$, boundedness needs:
+\[
+\beta(1+\gamma)^{1-\sigma}<1
+\]
+
+\begin{block}{Takeaway}
+Discounting alone is not enough; curvature and growth jointly determine boundedness.
+\end{block}
+\end{frame}
+
+\begin{frame}{Infinite-Horizon Pitfall 2: Too-Large Feasible Set}
+Without borrowing limits, households can increase $c_0$ by rolling debt forever.
+
+\medskip
+Need no-Ponzi condition (nPg):
+\[
+\lim_{t\to\infty}\frac{a_{t+1}}{(1+r)^t}\ge 0
+\]
+
+\begin{itemize}
+  \item Excludes exploding debt in present value.
+  \item Makes optimization problem well posed.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{nPg and Lifetime Budget Constraint}
+\hypertarget{m-a5}{}
+From period-by-period budget constraints:
+\[
+c_t+a_{t+1}=(1+r)a_t
+\]
+Iterating forward and using nPg gives
+\[
+\sum_{t=0}^{\infty}\frac{c_t}{(1+r)^t}\le a_0(1+r)
+\]
+
+At optimum with strictly increasing utility, equality holds.
+\apxbutton{a5}
+\end{frame}
+
+\begin{frame}{TVC: Distinct from nPg}
+Transversality condition:
+\[
+\lim_{t\to\infty}\frac{a_{t+1}}{(1+r)^t}\le 0
+\]
+
+\begin{itemize}
+  \item nPg: external feasibility restriction (no endless unpaid debt).
+  \item TVC: internal optimality restriction (no over-accumulating assets that could be consumed).
+\end{itemize}
+
+Together with strict monotonicity of utility, they imply a tight lifetime budget equality.
+\end{frame}
+
+\begin{frame}{Example 4.3: Infinite-Horizon Log Consumption-Saving}
+Problem:
+\[
+\max\sum_{t=0}^{\infty}\beta^t\log c_t
+\quad\text{s.t.}\quad
+c_t+a_{t+1}=(1+r)a_t
+\]
+Consolidated budget and FOCs imply:
+\[
+c_t=[\beta(1+r)]^t c_0,
+\qquad
+c_0=a_0(1-\beta)(1+r)
+\]
+
+This is a full closed-form consumption path.
+\end{frame}
+
+\begin{frame}{Proposition 4.4 (Sufficiency with TVC)}
+\hypertarget{m-a6}{}
+For
+\[
+\max_{\{x_{t+1}\}}\sum_{t=0}^{\infty}\beta^t\mathcal{F}(x_t,x_{t+1}),\quad x_{t+1}\in\Gamma(x_t)
+\]
+if
+\begin{itemize}
+  \item Euler equations hold at all $t$,
+  \item TVC holds,
+  \item $\mathcal{F}$ jointly concave and increasing in first argument,
+  \item $\Gamma$ convex,
+\end{itemize}
+then the candidate sequence is optimal.
+\apxbutton{a6}
+\end{frame}
+
+\begin{frame}{TVC in the Infinite-Horizon NGM}
+In NGM:
+\[
+\mathcal{F}_1 \to u'(c_t)\left[f'(k_t)+1-\delta\right]
+\]
+TVC becomes
+\[
+\lim_{t\to\infty}\beta^t u'(c_t)\left[f'(k_t)+1-\delta\right]k_t=0
+\]
+
+\begin{block}{Economic Meaning}
+The discounted shadow value of remaining capital cannot stay positive in the limit.
+\end{block}
+\end{frame}
+
+\begin{frame}{Infinite-Horizon NGM: Steady State Condition}
+At a stationary steady state ($c_{t+1}=c_t$, $k_{t+1}=k_t=\bar{k}$), Euler implies
+\[
+1=\beta\left[f'(\bar{k})+1-\delta\right]
+\]
+
+Then
+\[
+\bar{c}=f(\bar{k})-\delta\bar{k}
+\]
+
+This is the optimizing counterpart to Solow steady-state logic.
+\end{frame}
+
+\begin{frame}{Examples 4.5-4.6: Link to Solow}
+For log utility, Cobb-Douglas, full depreciation:
+\[
+k_{t+1}=\alpha\beta A k_t^{\alpha}
+\]
+Hence saving is a constant share:
+\[
+s=\alpha\beta
+\]
+
+\begin{block}{Important Bridge}
+Under these assumptions, optimizing growth generates Solow-style law of motion with endogenous $s$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Balanced Growth Version of NGM}
+With $Y_t=F(K_t,A_tL_t)$, $A_t$ grows at $\gamma$, $L_t$ at $n$, and utilitarian welfare:
+\[
+\max \sum_{t=0}^{\infty}\beta^t L_t u(c_t)
+\]
+
+Normalize by efficiency units:
+\[
+\tilde{k}_t=\frac{K_t}{A_tL_t},\qquad \tilde{c}_t=\frac{C_t}{A_tL_t}
+\]
+
+Balanced growth path corresponds to steady values of normalized variables.
+\end{frame}
+
+\begin{frame}{Why CRRA is Central for Balanced Growth}
+Chapter 4 emphasizes a sharp characterization:
+\begin{itemize}
+  \item Exact balanced growth with constant interest in these models requires power utility (CRRA/log limit).
+  \item Otherwise, saving behavior drifts systematically with growth in scale.
+\end{itemize}
+
+\begin{block}{Practical Implication}
+Most quantitative macro models use CRRA not only for convenience, but for consistency with long-run growth facts.
+\end{block}
+\end{frame}
+
+%% ============================================================
+\section{4.4 Recursive Methods}
+%% ============================================================
+
+\begin{frame}{Dynamic Programming Idea}
+\hypertarget{m-a7}{}
+Instead of choosing full sequences directly, define the value of starting from state $x$:
+\[
+V(x)=\max_{\{x_{t+1}\}}\sum_{t=0}^{\infty}\beta^t\mathcal{F}(x_t,x_{t+1})
+\]
+
+Stationarity allows decomposition into today + continuation value.
+\apxbutton{a7}
+\end{frame}
+
+\begin{frame}{Bellman Equation (4.22)}
+\[
+V(x)=\max_{x'\in\Gamma(x)}\left\{\mathcal{F}(x,x')+\beta V(x')\right\}
+\]
+Policy function:
+\[
+g(x)=\arg\max_{x'\in\Gamma(x)}\left\{\mathcal{F}(x,x')+\beta V(x')\right\}
+\]
+
+\begin{itemize}
+  \item $V$: value of being in state $x$.
+  \item $g$: optimal one-step-ahead decision rule.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Standard NGM in Recursive Form (P4)}
+\[
+V(k)=\max_{k'\in\Gamma(k)}\left\{u\left(f(k)+(1-\delta)k-k'\right)+\beta V(k')\right\}
+\]
+with
+\[
+\Gamma(k)=[0,f(k)+(1-\delta)k]
+\]
+
+Current state: $k$. Control: $k'$ (equivalently consumption).
+\end{frame}
+
+\begin{frame}{How to Identify State Variables}
+A variable should be a state if it is:
+\begin{itemize}
+  \item Predetermined at decision time.
+  \item Payoff relevant for today and future.
+  \item Not redundant given other states.
+\end{itemize}
+
+\begin{block}{Common mistake}
+Leaving out a relevant predetermined variable breaks stationarity and yields wrong policy rules.
+\end{block}
+\end{frame}
+
+\begin{frame}{Periodic Productivity Example (Chapter 4.4.2)}
+If technology alternates deterministically $A_h, A_l$, recursive form uses two value functions:
+\[
+V_h(k)=\max_{k'\in\Gamma_h(k)}\{u(A_hf(k)+(1-\delta)k-k')+\beta V_l(k')\}
+\]
+\[
+V_l(k)=\max_{k'\in\Gamma_l(k)}\{u(A_lf(k)+(1-\delta)k-k')+\beta V_h(k')\}
+\]
+
+State must include both $k$ and the regime indicator.
+\end{frame}
+
+\begin{frame}{Delayed Depreciation Example (Chapter 4.4.2)}
+If capital equals two lagged investments, $k_t=i_{t-1}+i_{t-2}$, then two states are needed.
+
+\medskip
+Recursive representation uses $V(i',i)$ and choice $i''$.
+
+\begin{block}{Intuition}
+Non-standard technology often increases state dimension.
+\end{block}
+\end{frame}
+
+\begin{frame}{Core Properties of the Value Function}
+Under standard assumptions:
+\begin{enumerate}
+  \item Bellman operator is a contraction ($\beta<1$).
+  \item $V$ is increasing when primitives are monotone.
+  \item $V$ is concave when primitives/feasible set are concave-convex.
+  \item Interior points allow differentiability of $V$.
+  \item Policy function $g$ is increasing.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Value Iteration Algorithm}
+\hypertarget{m-a8}{}
+Start from any bounded continuous $V_0$ (often $V_0=0$), then iterate:
+\[
+V_{n+1}(x)=\max_{x'\in\Gamma(x)}\{\mathcal{F}(x,x')+\beta V_n(x')\}
+\]
+Error shrinks geometrically in sup norm:
+\[
+\|V_{n+1}-V\|\le\beta\|V_n-V\|
+\]
+
+\textbf{Computational message:} globally reliable convergence.
+\apxbutton{a8}
+\end{frame}
+
+\begin{frame}{Example 4.7: Recursive Solution in Log-Cobb-Douglas Case}
+With $u(c)=\log c$, $f(k)=Ak^\alpha$, $\delta=1$:
+\[
+V(k)=\max_{k'\ge 0}\{\log(Ak^\alpha-k')+\beta V(k')\}
+\]
+
+Value iteration reveals the policy converges to
+\[
+k'=\alpha\beta Ak^\alpha
+\]
+
+Same rule obtained from sequential approach.
+\end{frame}
+
+\begin{frame}{Functional Euler Equation}
+\hypertarget{m-a9}{}
+Bellman FOC (interior):
+\[
+-\mathcal{F}_2(x,x')=\beta V'(x')
+\]
+Envelope condition:
+\[
+V'(x)=\mathcal{F}_1(x,g(x))
+\]
+Combining:
+\[
+-\mathcal{F}_2(x,g(x))=\beta\mathcal{F}_1(g(x),g(g(x)))
+\]
+This is the functional Euler equation.
+\apxbutton{a9}
+\end{frame}
+
+\begin{frame}{Why Functional Euler Is Useful but Not Enough}
+\begin{itemize}
+  \item It is a necessary condition for optimal policy.
+  \item It can admit multiple candidate functions.
+  \item Only one candidate attains the Bellman maximum globally.
+\end{itemize}
+
+\begin{block}{Practice}
+Use functional Euler for intuition/local approximations, but verify with Bellman optimality.
+\end{block}
+\end{frame}
+
+%% ============================================================
+\section{4.4.6 Dynamics and Convergence}
+%% ============================================================
+
+\begin{frame}{Policy Dynamics in the Optimizing NGM}
+Given $k_{t+1}=g(k_t)$, dynamics are a first-order system in the state.
+
+\medskip
+Steady states solve
+\[
+\bar{k}=g(\bar{k})
+\]
+Local approximation around steady state:
+\[
+g(k)\approx a_0+a_1(k-\bar{k})
+\]
+
+Convergence speed is governed by slope $a_1$.
+\end{frame}
+
+\begin{frame}{Stable vs Unstable Local Roots}
+Chapter 4.4.6 shows a second-order condition can yield two local roots for slope.
+
+\begin{itemize}
+  \item One root satisfies $0<a_1<1$: stable, monotone convergence.
+  \item Another root exceeds $1$: unstable, violates optimality/Bellman maximum.
+\end{itemize}
+
+\begin{block}{Economic Selection}
+The Bellman problem chooses the stable policy branch.
+\end{block}
+\end{frame}
+
+\begin{frame}{Calibration Insight from Local Slope}
+Define curvature term near steady state (notation of chapter):
+\[
+\Theta\equiv\beta^2\frac{u' f''}{u''}>0
+\]
+Then local slope $a_1$ solves a quadratic expression.
+
+\medskip
+Interpretation:
+\begin{itemize}
+  \item $a_1\approx 0$: very fast convergence.
+  \item $a_1\approx 1$: very slow convergence.
+\end{itemize}
+
+This replaces fixed-$s$ Solow speed with preference-dependent dynamics.
+\end{frame}
+
+\begin{frame}{Solow vs Optimizing NGM: Key Dynamic Difference}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\textbf{Solow}
+\begin{itemize}
+  \item $s$ exogenous constant.
+  \item Dynamics from technology + depreciation + fixed saving rule.
+\end{itemize}
+
+\column{0.48\textwidth}
+\textbf{Optimizing NGM}
+\begin{itemize}
+  \item $s_t=s(k_t)$ endogenous.
+  \item Dynamics shaped by $u$, $f$, and expectations.
+\end{itemize}
+\end{columns}
+
+\medskip
+Same long-run logic, richer transition mechanism.
+\end{frame}
+
+%% ============================================================
+\section{Wrap-up}
+%% ============================================================
+
+\begin{frame}{What Chapter 4 Delivers}
+\begin{enumerate}
+  \item A unified language for dynamic choices in macroeconomics.
+  \item Euler equations as central intertemporal optimality conditions.
+  \item Clear distinction between finite and infinite horizon boundary logic.
+  \item nPg and TVC as fundamental infinite-horizon restrictions.
+  \item Recursive methods that scale to quantitative and stochastic models.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Takeaways for Research Practice}
+\begin{itemize}
+  \item Always verify well-posedness before solving.
+  \item Use sequential methods for theory and derivations.
+  \item Use recursive methods for computation and policy functions.
+  \item Check TVC/nPg consistency when proposing candidate paths.
+  \item Keep growth consistency in mind: CRRA is structural, not cosmetic.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Next Lecture (Chapter 5)}
+We move from individual optimization to dynamic equilibrium:
+\begin{itemize}
+  \item Firms, households, and price determination.
+  \item Decentralization of planner allocations.
+  \item Competitive equilibrium as a dynamic system.
+\end{itemize}
+\end{frame}
+
+%% ============================================================
+\appendix
+\section{Appendix Derivations}
+%% ============================================================
+
+\begin{frame}{A1. From Generic Constraint to Sequence-Only Problem}
+\hypertarget{a1}{}
+If $x_{t+1}=h(x_t,y_t)$ can be inverted to $y_t=\hat{h}(x_t,x_{t+1})$, define
+\[
+\mathcal{F}(x_t,x_{t+1})\equiv \hat{\mathcal{F}}\big(\hat{h}(x_t,x_{t+1})\big)
+\]
+Then (P1) becomes
+\[
+\max_{\{x_{t+1}\}}\sum_{t=0}^{T}\beta^t\mathcal{F}(x_t,x_{t+1})
+\]
+with $x_{t+1}\in\Gamma(x_t)$.
+
+This is the standard form used for Euler equations in Chapter 4.
+\backbutton{m-a1}
+\end{frame}
+
+\begin{frame}{A2. Two-Period Euler Equation with Kuhn-Tucker}
+\hypertarget{a2}{}
+FOCs:
+\[
+u'(c_0)-\mu-\lambda=0,
+\qquad
+\beta u'(c_1)-\frac{\mu}{1+r}=0
+\]
+If interior ($\lambda=0$):
+\[
+\mu=u'(c_0),\qquad \mu=\beta(1+r)u'(c_1)
+\]
+Hence
+\[
+u'(c_0)=\beta(1+r)u'(c_1)
+\]
+\backbutton{m-a2}
+\end{frame}
+
+\begin{frame}{A3. Finite-Horizon NGM Euler Equation}
+\hypertarget{a3}{}
+From
+\[
+\mathcal{L}=\sum_{t=0}^{T}\beta^t\left[u(c_t)+\mu_tk_{t+1}\right]
+\]
+where $c_t=f(k_t)+(1-\delta)k_t-k_{t+1}$, FOC for $k_{t+1}$ gives
+\[
+-u'(c_t)+\beta u'(c_{t+1})\left[f'(k_{t+1})+1-\delta\right]+\mu_t=0
+\]
+At interior dates, $\mu_t=0$.
+\backbutton{m-a3}
+\end{frame}
+
+\begin{frame}{A4. EIS Under CRRA}
+\hypertarget{a4}{}
+Euler with gross return $R_{t,t+s}$:
+\[
+u'(c_t)=\beta^s u'(c_{t+s})R_{t,t+s}
+\]
+CRRA derivative: $u'(c)=c^{-\sigma}$, so
+\[
+\frac{c_{t+s}}{c_t}=\left(\beta^sR_{t,t+s}\right)^{1/\sigma}
+\]
+Take logs and differentiate w.r.t. $\log R_{t,t+s}$:
+\[
+EIS=\frac{1}{\sigma}
+\]
+\backbutton{m-a4}
+\end{frame}
+
+\begin{frame}{A5. Consolidating Budget Constraints with nPg}
+\hypertarget{a5}{}
+From $c_t+a_{t+1}=(1+r)a_t$, iterate forward:
+\[
+\sum_{t=0}^{T}\frac{c_t}{(1+r)^t}=a_0(1+r)-\frac{a_{T+1}}{(1+r)^T}
+\]
+Take limits and use
+\[
+\lim_{T\to\infty}\frac{a_{T+1}}{(1+r)^T}\ge 0
+\]
+obtain
+\[
+\sum_{t=0}^{\infty}\frac{c_t}{(1+r)^t}\le a_0(1+r)
+\]
+\backbutton{m-a5}
+\end{frame}
+
+\begin{frame}{A6. Proposition 4.4 Logic (Sketch)}
+\hypertarget{a6}{}
+Given concavity, for any feasible comparison path,
+\[
+\mathcal{F}(x_t,x_{t+1})-\mathcal{F}(x_t^*,x_{t+1}^*)
+\]
+is bounded above by tangent terms.
+
+\medskip
+Summing and applying Euler equations collapses interior terms.
+
+\medskip
+Remaining boundary term vanishes by TVC, implying candidate path gives weakly higher value than any feasible alternative.
+\backbutton{m-a6}
+\end{frame}
+
+\begin{frame}{A7. Bellman Equation Derivation}
+\hypertarget{a7}{}
+Start from
+\[
+V(x_0)=\max_{\{x_{t+1}\}}\sum_{t=0}^{\infty}\beta^t\mathcal{F}(x_t,x_{t+1})
+\]
+Split first period:
+\[
+V(x_0)=\max_{x_1\in\Gamma(x_0)}\left\{\mathcal{F}(x_0,x_1)+\beta
+\max_{\{x_{t+2}\}}\sum_{t=0}^{\infty}\beta^t\mathcal{F}(x_{t+1},x_{t+2})\right\}
+\]
+Bracketed term is $V(x_1)$ by stationarity.
+\backbutton{m-a7}
+\end{frame}
+
+\begin{frame}{A8. Why Contraction Implies Reliable Iteration}
+\hypertarget{a8}{}
+Bellman operator $\mathcal{T}$ satisfies
+\[
+\|\mathcal{T}V-\mathcal{T}W\|\le\beta\|V-W\|,\qquad \beta<1
+\]
+Banach fixed-point theorem implies:
+\begin{itemize}
+  \item Unique fixed point $V$.
+  \item Iteration $V_{n+1}=\mathcal{T}V_n$ converges to $V$ from any $V_0$.
+  \item Geometric convergence rate $\beta$.
+\end{itemize}
+\backbutton{m-a8}
+\end{frame}
+
+\begin{frame}{A9. Functional Euler from Bellman + Envelope}
+\hypertarget{a9}{}
+Bellman FOC at interior optimum $x'=g(x)$:
+\[
+\mathcal{F}_2(x,g(x))+\beta V'(g(x))=0
+\]
+Envelope:
+\[
+V'(x)=\mathcal{F}_1(x,g(x))
+\]
+Substitute envelope one step ahead:
+\[
+-\mathcal{F}_2(x,g(x))=\beta\mathcal{F}_1(g(x),g(g(x)))
+\]
+\backbutton{m-a9}
+\end{frame}
+
+\begin{frame}{A10. Finite-Horizon Closed Form (Example 4.1)}
+With log utility, Cobb-Douglas, and $\delta=1$, Euler gives recursion:
+\[
+\frac{1}{Ak_t^\alpha-k_{t+1}}=\beta\frac{\alpha A k_{t+1}^{\alpha-1}}{Ak_{t+1}^\alpha-k_{t+2}}
+\]
+Using terminal condition $k_{T+1}=0$ and backward induction yields
+\[
+k_{t+1}=\alpha\beta\frac{1-(\alpha\beta)^{T-t}}{1-(\alpha\beta)^{T-t+1}}Ak_t^{\alpha}
+\]
+\backbutton{m-a3}
+\end{frame}
+
+\begin{frame}{A11. Infinite-Horizon Log Consumption-Saving (Example 4.3)}
+FOCs under consolidated budget:
+\[
+\beta^t\frac{1}{c_t}=\lambda\left(\frac{1}{1+r}\right)^t
+\]
+Thus
+\[
+c_t=[\beta(1+r)]^t c_0
+\]
+Plug into budget:
+\[
+\sum_{t=0}^{\infty}\beta^t c_0=a_0(1+r)
+\]
+Hence $c_0=a_0(1-\beta)(1+r)$.
+\backbutton{m-a5}
+\end{frame}
+
+\begin{frame}{A12. Solow Link in Log-Cobb-Douglas NGM}
+From Euler and guess $k'=sAk^\alpha$ with $\delta=1$:
+\[
+\frac{1}{Ak^\alpha-k'}=\beta\frac{\alpha A (k')^{\alpha-1}}{Ak'^\alpha-k''}
+\]
+Consistency of the guess implies
+\[
+s=\alpha\beta
+\]
+so policy is $k'=\alpha\beta Ak^\alpha$.
+\backbutton{m-a6}
+\end{frame}
+
+\begin{frame}{A13. Steady State Condition in Stationary NGM}
+At steady state, $k_{t+1}=k_t=\bar{k}$ and $c_{t+1}=c_t$.
+Euler simplifies to
+\[
+1=\beta\left[f'(\bar{k})+1-\delta\right]
+\]
+Then resources imply
+\[
+\bar{c}=f(\bar{k})-\delta\bar{k}
+\]
+\backbutton{m-a6}
+\end{frame}
+
+\begin{frame}{A14. nPg vs TVC in One Line}
+\begin{itemize}
+  \item nPg: excludes paths with exploding debt in present value.
+  \item TVC: excludes paths with leftover positive asset value at infinity.
+\end{itemize}
+
+\medskip
+Feasibility + optimality jointly select economically meaningful paths in infinite horizon.
+\backbutton{m-a6}
+\end{frame}
+
+\end{document}
