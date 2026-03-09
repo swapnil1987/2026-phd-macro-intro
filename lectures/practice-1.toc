@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Easy Problems}{3}{0}{1}
+\beamer@sectionintoc {2}{Hard Problems}{9}{0}{2}
+\beamer@sectionintoc {3}{Very Hard Problems}{15}{0}{3}
+\beamer@sectionintoc {4}{Solutions}{21}{1}{4}

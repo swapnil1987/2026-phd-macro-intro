@@ -935,15 +935,25 @@ EIS=\frac{1}{\sigma}
 
 \begin{frame}{A5. Consolidating Budget Constraints with nPg}
 \hypertarget{a5}{}
-From $c_t+a_{t+1}=(1+r)a_t$, iterate forward:
+Start from
+\[
+c_t+a_{t+1}=(1+r)a_t
+\]
+At $t=0$: $a_1=(1+r)a_0-c_0$.
+
+At $t=1$: $a_2=(1+r)a_1-c_1=(1+r)^2a_0-(1+r)c_0-c_1$. Continuing forward, for any $T\ge 0$:
+\[
+a_{T+1}=(1+r)^{T+1}a_0-\sum_{t=0}^{T}(1+r)^{T-t}c_t
+\]
+Divide by $(1+r)^T$:
 \[
 \sum_{t=0}^{T}\frac{c_t}{(1+r)^t}=a_0(1+r)-\frac{a_{T+1}}{(1+r)^T}
 \]
-Take limits and use
+Now let $T\to\infty$ and impose nPg:
 \[
 \lim_{T\to\infty}\frac{a_{T+1}}{(1+r)^T}\ge 0
 \]
-obtain
+Hence the lifetime budget set is
 \[
 \sum_{t=0}^{\infty}\frac{c_t}{(1+r)^t}\le a_0(1+r)
 \]

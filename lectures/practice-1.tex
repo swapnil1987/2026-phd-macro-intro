@@ -1,0 +1,833 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+
+\usetheme{SimplePlus}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\setlist[enumerate]{label=(\alph*)}
+
+\title{Macroeconomics PhD Intro\\Practice Problems 1}
+\subtitle{Solow Model \& Dynamic Optimization}
+\author{Swapnil Singh}
+\institute{Lietuvos Bankas \and Kaunas University of Technology}
+\date{Spring 2026}
+
+\newcommand{\apxbutton}[1]{\hfill\hyperlink{#1}{\beamerbutton{Solution}}}
+\newcommand{\backbutton}[1]{\hfill\hyperlink{#1}{\beamerbutton{Back}}}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Overview}
+\begin{itemize}
+  \item Problems cover material from Lectures 2 (Solow Model) and 3 (Dynamic Optimization).
+  \item Organized in three tiers: \textbf{Easy}, \textbf{Hard}, and \textbf{Very Hard}.
+  \item Mix of intuitive reasoning and analytical derivation.
+  \item Each problem has a detailed solution accessible via the \beamerbutton{Solution} button.
+\end{itemize}
+\end{frame}
+
+%% ============================================================
+%% EASY PROBLEMS
+%% ============================================================
+
+\section{Easy Problems}
+
+%% ----- EASY 1 -----
+\begin{frame}{Easy 1: Steady State Interpretation}
+\hypertarget{q-e1}{}
+Consider the basic Solow model with Cobb-Douglas production $f(k)=k^\alpha$, saving rate $s$, and depreciation rate $\delta$.
+
+\begin{enumerate}
+  \item Write down the steady-state condition and solve for $\bar{k}$.
+  \item Compute steady-state output $\bar{y}$, consumption $\bar{c}$, and investment $\bar{i}$.
+  \item Using $\alpha=1/3$, $s=0.2$, $\delta=0.05$, compute the numerical values of $\bar{k}$, $\bar{y}$, and $\bar{k}/\bar{y}$.
+  \item Explain in words: why does a higher $s$ raise the \emph{level} of $\bar{y}$ but not the long-run \emph{growth rate}?
+\end{enumerate}
+\apxbutton{s-e1}
+\end{frame}
+
+%% ----- EASY 2 -----
+\begin{frame}{Easy 2: Capital-Output Ratio}
+\hypertarget{q-e2}{}
+In the Solow model, the steady-state capital-output ratio satisfies $\bar{k}/\bar{y} = s/\delta$.
+
+\begin{enumerate}
+  \item Show that this result holds for \emph{any} neoclassical production function $f(k)$, not just Cobb-Douglas.
+  \item If $s = 0.25$ and $\delta = 0.05$, what is $\bar{k}/\bar{y}$? Is this consistent with U.S.\ data?
+  \item Suppose depreciation doubles to $\delta = 0.10$ while $s$ stays fixed. What happens to $\bar{k}/\bar{y}$? Provide economic intuition.
+\end{enumerate}
+\apxbutton{s-e2}
+\end{frame}
+
+%% ----- EASY 3 -----
+\begin{frame}{Easy 3: Convergence Intuition}
+\hypertarget{q-e3}{}
+Two countries, A and B, have identical parameters $(\alpha, s, \delta, \gamma, n)$ but different initial capital stocks: $k_0^A < k_0^B$.
+
+\begin{enumerate}
+  \item Which country grows faster in per-capita income during the transition? Why?
+  \item Will they eventually reach the same level of per-capita income? The same growth rate?
+  \item Does the Solow model predict unconditional or conditional convergence? What is the difference?
+  \item How does this prediction fare against the data for all countries? For OECD countries?
+\end{enumerate}
+\apxbutton{s-e3}
+\end{frame}
+
+%% ----- EASY 4 -----
+\begin{frame}{Easy 4: Euler Equation Intuition}
+\hypertarget{q-e4}{}
+The consumption Euler equation in the neoclassical growth model is:
+\[
+u'(c_t) = \beta\left[f'(k_{t+1}) + 1 - \delta\right] u'(c_{t+1})
+\]
+
+\begin{enumerate}
+  \item Explain in words what this equation says about the household's intertemporal trade-off.
+  \item What does $f'(k_{t+1}) + 1 - \delta$ represent economically?
+  \item If $\beta(1+r) > 1$, is consumption growing or falling over time? Explain.
+  \item At the steady state, what does the Euler equation imply about $f'(\bar{k})$?
+\end{enumerate}
+\apxbutton{s-e4}
+\end{frame}
+
+%% ----- EASY 5 -----
+\begin{frame}{Easy 5: Sequential vs.\ Recursive}
+\hypertarget{q-e5}{}
+Consider the infinite-horizon neoclassical growth model.
+
+\begin{enumerate}
+  \item What is the ``state variable'' and what is the ``control variable'' in the planner's problem?
+  \item Write down the Bellman equation for this problem.
+  \item Why does infinite horizon require a transversality condition (TVC) but finite horizon does not?
+  \item In the log-Cobb-Douglas case with $\delta=1$, the optimal policy is $k'=\alpha\beta Ak^\alpha$. What is the implied saving rate? How does this compare to the Solow model?
+\end{enumerate}
+\apxbutton{s-e5}
+\end{frame}
+
+%% ----- EASY 6 -----
+\begin{frame}{Easy 6: CRRA and Balanced Growth}
+\hypertarget{q-e6}{}
+The CRRA utility function is $u(c) = \frac{c^{1-\sigma}-1}{1-\sigma}$.
+
+\begin{enumerate}
+  \item What happens as $\sigma \to 1$? Verify using L'H\^{o}pital's rule.
+  \item What is the elasticity of intertemporal substitution (EIS) under CRRA?
+  \item If $\sigma = 2$ and the interest rate rises by 1\%, by how much does consumption growth change?
+  \item Why is CRRA the ``right'' utility class for models with balanced growth?
+\end{enumerate}
+\apxbutton{s-e6}
+\end{frame}
+
+%% ============================================================
+%% HARD PROBLEMS
+%% ============================================================
+
+\section{Hard Problems}
+
+%% ----- HARD 1 -----
+\begin{frame}{Hard 1: Convergence Speed Derivation}
+\hypertarget{q-h1}{}
+In the Solow model with Cobb-Douglas production, no growth ($\gamma=n=0$):
+
+\begin{enumerate}
+  \item Linearize the fundamental equation $k_{t+1} = (1-\delta)k_t + sk_t^\alpha$ around the steady state $\bar{k}$.
+  \item Show that the convergence speed is $\lambda = \delta(1-\alpha)$.
+  \item Compute the half-life of convergence for $\alpha=1/3$, $\delta=0.05$.
+  \item Explain why $s$ does not appear in $\lambda$ under Cobb-Douglas. What are the two opposing forces?
+  \item For a general CES production function $f(k) = [ak^\rho + (1-a)]^{1/\rho}$, would $s$ affect $\lambda$? Explain.
+\end{enumerate}
+\apxbutton{s-h1}
+\end{frame}
+
+%% ----- HARD 2 -----
+\begin{frame}{Hard 2: Growing Economy Steady State}
+\hypertarget{q-h2}{}
+Consider the Solow model with technology growth $\gamma$ and population growth $n$, Cobb-Douglas production.
+
+\begin{enumerate}
+  \item Derive the fundamental equation in efficiency units: $(1+\gamma)(1+n)\tilde{k}_{t+1} = (1-\delta)\tilde{k}_t + s\tilde{k}_t^\alpha$.
+  \item Solve for the balanced growth path (BGP) value $\overline{\tilde{k}}$.
+  \item Show that along the BGP, per-capita income grows at rate $\gamma$.
+  \item Derive the convergence speed in the growing economy and show it equals $(1-\alpha)\left[1 - \frac{1-\delta}{(1+\gamma)(1+n)}\right]$.
+  \item Using $\alpha=1/3$, $\gamma=0.02$, $n=0.01$, $\delta=0.046$, compute $\lambda$ and the half-life. Compare with the empirical estimate $\lambda \approx 0.02$.
+\end{enumerate}
+\apxbutton{s-h2}
+\end{frame}
+
+%% ----- HARD 3 -----
+\begin{frame}{Hard 3: Log-Linearization of the Solow-RBC Model}
+\hypertarget{q-h3}{}
+Consider $k_{t+1} = sA_tk_t^\alpha\ell^{1-\alpha} + (1-\delta)k_t$ with persistent technology shocks $\hat{A}_t = \rho^t\varepsilon$.
+
+\begin{enumerate}
+  \item Define log-deviations $\hat{k}_t \equiv \log(k_t/\bar{k})$ and derive the log-linearized capital law:
+  \[
+  \hat{k}_{t+1} = (1 - \delta(1-\alpha))\hat{k}_t + \delta\hat{A}_t
+  \]
+  \item Solve this linear difference equation forward to obtain a closed form for $\hat{k}_{t+1}$.
+  \item Derive the output deviation $\hat{y}_t = \hat{A}_t + \alpha\hat{k}_t$. Explain the two channels through which a technology shock affects output.
+  \item Using $\delta=0.046$, $\alpha=1/3$, $\rho=0.9$, $\varepsilon=0.01$: compute $\hat{k}_1$, $\hat{k}_5$, and $\hat{y}_0$.
+\end{enumerate}
+\apxbutton{s-h3}
+\end{frame}
+
+%% ----- HARD 4 -----
+\begin{frame}{Hard 4: Two-Period Consumption-Saving with Borrowing Constraint}
+\hypertarget{q-h4}{}
+A household lives two periods with $u(c)=\log c$, $\beta=0.95$, $r=0.05$, $a_0=0$, and no-borrowing constraint $a_1 \geq 0$.
+
+\begin{enumerate}
+  \item Suppose $w_0 = 10$, $w_1 = 10$. Write down the Lagrangian with the borrowing constraint. Solve for optimal $(c_0, c_1, a_1)$. Does the constraint bind?
+  \item Now suppose $w_0 = 5$, $w_1 = 20$. Solve again. Does the borrowing constraint bind now? Explain the economics.
+  \item For the constrained case, show that the Euler equation holds as an \emph{inequality}: $u'(c_0) > \beta(1+r)u'(c_1)$.
+  \item What is the welfare cost of the borrowing constraint in case (b)? Compute the consumption-equivalent variation.
+\end{enumerate}
+\apxbutton{s-h4}
+\end{frame}
+
+%% ----- HARD 5 -----
+\begin{frame}{Hard 5: Factor Shares and Euler's Theorem}
+\hypertarget{q-h5}{}
+Consider a CES production function $Y = [aK^\rho + (1-a)(AL)^\rho]^{1/\rho}$ with competitive factor pricing.
+
+\begin{enumerate}
+  \item Derive the capital share $\alpha_K \equiv r_t K_t / Y_t$ as a function of $\tilde{k} \equiv K/(AL)$ and $\rho$.
+  \item Show that when $\rho = 0$ (Cobb-Douglas), the capital share is constant and equal to $a$.
+  \item If $\rho < 0$ (elasticity of substitution $<1$), does capital deepening raise or lower the capital share? Explain.
+  \item The U.S.\ labor share has declined from about 0.66 to 0.58 over 1980--2020. What does this imply about $\rho$ if the change is driven by capital deepening?
+\end{enumerate}
+\apxbutton{s-h5}
+\end{frame}
+
+%% ----- HARD 6 -----
+\begin{frame}{Hard 6: Finite-Horizon NGM Closed Form}
+\hypertarget{q-h6}{}
+Consider the finite-horizon NGM with $u(c)=\log c$, $f(k)=Ak^\alpha$, $\delta=1$, horizon $T$.
+
+\begin{enumerate}
+  \item Write down the Euler equation and the terminal condition.
+  \item Using backward induction from $k_{T+1}=0$, show that the optimal saving rate at date $t$ is:
+  \[
+  s_t \equiv \frac{k_{t+1}}{Ak_t^\alpha} = \alpha\beta\frac{1-(\alpha\beta)^{T-t}}{1-(\alpha\beta)^{T-t+1}}
+  \]
+  \item Show that as $T \to \infty$, $s_t \to \alpha\beta$ (the infinite-horizon result).
+  \item Compute $s_T$ (saving rate in the last period). Is this intuitive?
+  \item Plot or sketch $s_t$ as a function of $T-t$ (time remaining). What is the economic logic?
+\end{enumerate}
+\apxbutton{s-h6}
+\end{frame}
+
+%% ============================================================
+%% VERY HARD PROBLEMS
+%% ============================================================
+
+\section{Very Hard Problems}
+
+%% ----- VERY HARD 1 -----
+\begin{frame}{Very Hard 1: Golden Rule and Dynamic Efficiency}
+\hypertarget{q-v1}{}
+In the Solow model with Cobb-Douglas production:
+
+\begin{enumerate}
+  \item The ``Golden Rule'' saving rate $s^{GR}$ maximizes steady-state consumption. Derive $s^{GR}$ and the corresponding $\bar{k}^{GR}$.
+  \item Show that $s^{GR} = \alpha$. At the Golden Rule, what is the relationship between the net marginal product of capital and the depreciation rate?
+  \item In the optimizing NGM (Cass-Koopmans), the steady-state satisfies $f'(\bar{k}) = 1/\beta - 1 + \delta$. Under what condition on $\beta$ does the optimizing economy choose the Golden Rule?
+  \item An economy with $s > s^{GR}$ is called ``dynamically inefficient.'' Explain why everyone can be made better off by reducing $s$. Can the Cass-Koopmans economy ever be dynamically inefficient?
+\end{enumerate}
+\apxbutton{s-v1}
+\end{frame}
+
+%% ----- VERY HARD 2 -----
+\begin{frame}{Very Hard 2: Poverty Trap and Big Push}
+\hypertarget{q-v2}{}
+Suppose the production function is $f(k) = Bk$ for $k \leq k^*$ and $f(k) = Bk^* + A(k-k^*)^\alpha$ for $k > k^*$, with $A > B > 0$ and $\alpha \in (0,1)$.
+
+\begin{enumerate}
+  \item Sketch the map $G(k) = (1-\delta)k + sf(k)$ against the 45-degree line. How many steady states can exist?
+  \item Find conditions on $s$, $\delta$, $B$ such that a poverty-trap steady state exists below $k^*$.
+  \item Suppose the economy is stuck at the poverty trap. What is the minimum ``big push'' (increase in $k$) required to escape?
+  \item A policy temporarily raises $s$ to $\hat{s}$ for $\tau$ periods. Derive the condition on $(\hat{s}, \tau)$ that allows escape from the poverty trap.
+\end{enumerate}
+\apxbutton{s-v2}
+\end{frame}
+
+%% ----- VERY HARD 3 -----
+\begin{frame}{Very Hard 3: Value Function Iteration}
+\hypertarget{q-v3}{}
+Consider the NGM with $u(c)=\log c$, $f(k)=Ak^\alpha$, $\delta=1$.
+
+\begin{enumerate}
+  \item Start with guess $V_0(k) = 0$. Compute $V_1(k)$ by solving the Bellman equation with $V_0$ as continuation value. Find the associated policy $g_1(k)$.
+  \item Compute $V_2(k)$ using $V_1$ as continuation value. Find $g_2(k)$.
+  \item Conjecture that $V_n(k) = E_n + F_n \log k$ for constants $E_n, F_n$. Verify this conjecture and derive the recursions for $E_n$ and $F_n$.
+  \item Show that $F_n \to \frac{\alpha}{1-\alpha\beta}$ as $n \to \infty$, and that the limiting policy is $k' = \alpha\beta Ak^\alpha$.
+\end{enumerate}
+\apxbutton{s-v3}
+\end{frame}
+
+%% ----- VERY HARD 4 -----
+\begin{frame}{Very Hard 4: Solow with Human Capital}
+\hypertarget{q-v4}{}
+Extend the Solow model: $Y_t = K_t^\alpha H_t^\phi (A_tL_t)^{1-\alpha-\phi}$ with $\alpha+\phi<1$. Physical capital accumulates as before with saving rate $s_K$. Human capital: $H_{t+1} = (1-\delta_H)H_t + s_H Y_t$.
+
+\begin{enumerate}
+  \item Define $\tilde{k}_t \equiv K_t/(A_tL_t)$ and $\tilde{h}_t \equiv H_t/(A_tL_t)$. Derive the two-dimensional system for $(\tilde{k}_{t+1}, \tilde{h}_{t+1})$.
+  \item Solve for the BGP values $(\overline{\tilde{k}}, \overline{\tilde{h}})$ in terms of $s_K, s_H, \delta, \delta_H, \alpha, \phi$.
+  \item Show that the convergence speed in this model is $\lambda = (1-\alpha-\phi)\delta_{\text{eff}}$, where $\delta_{\text{eff}}$ is the effective depreciation rate. Explain why human capital ($\phi > 0$) slows convergence.
+  \item With $\alpha=1/3$ and $\phi=1/3$, compute $\lambda$ and the half-life. Compare with the empirical estimate $\lambda \approx 0.02$ and explain why this extended model better matches the data.
+\end{enumerate}
+\apxbutton{s-v4}
+\end{frame}
+
+%% ----- VERY HARD 5 -----
+\begin{frame}{Very Hard 5: TVC, nPg, and Ponzi Schemes}
+\hypertarget{q-v5}{}
+Consider an infinite-horizon consumption-saving problem with constant $r$ and initial assets $a_0>0$.
+
+\begin{enumerate}
+  \item Show that without the no-Ponzi condition, the household can achieve unbounded utility by choosing $c_t = M$ for any large $M$, financed by ever-growing debt.
+  \item With nPg imposed, derive the lifetime budget constraint: $\sum_{t=0}^\infty \frac{c_t}{(1+r)^t} \leq a_0(1+r)$.
+  \item The TVC says $\lim_{t\to\infty} \beta^t u'(c_t) a_{t+1} = 0$. Show that if this fails---i.e., $\lim_{t\to\infty} \beta^t u'(c_t) a_{t+1} > 0$---the household is over-saving and can be made better off.
+  \item With CRRA utility $u(c)=c^{1-\sigma}/(1-\sigma)$ and $\beta(1+r)=1$, show that TVC holds if and only if $a_0 > 0$ is finite.
+\end{enumerate}
+\apxbutton{s-v5}
+\end{frame}
+
+%% ----- VERY HARD 6 -----
+\begin{frame}{Very Hard 6: Cobweb Dynamics Beyond Solow}
+\hypertarget{q-v6}{}
+Consider the one-dimensional dynamical system $x_{t+1} = G(x_t)$ with a unique interior fixed point $x^*$ satisfying $G(x^*)=x^*$.
+
+\begin{enumerate}
+  \item Show that if $G'(x^*) \in (0,1)$, convergence is monotone. If $G'(x^*) \in (-1,0)$, convergence is oscillatory.
+  \item For the Solow model $G(k)=(1-\delta)k+sk^\alpha$, show that $G'(\bar{k})=1-\delta(1-\alpha) \in (0,1)$ for all standard parameter values. Conclude that oscillatory convergence is impossible in the basic Solow model.
+  \item Now consider a ``bakery production function'' where output declines at very high $k$: $f(k)=k^\alpha e^{-\eta k}$ for $\eta>0$ small. Find the condition on parameters such that $G'(\bar{k})<0$, generating oscillatory dynamics.
+  \item For the bakery case, find the condition for chaos ($|G'(\bar{k})|>1$). Is this empirically plausible?
+\end{enumerate}
+\apxbutton{s-v6}
+\end{frame}
+
+%% ============================================================
+%%                    SOLUTIONS
+%% ============================================================
+
+\appendix
+\section{Solutions}
+
+%% ----- SOLUTION EASY 1 -----
+\begin{frame}{Solution: Easy 1 (a)--(b)}
+\hypertarget{s-e1}{}
+
+\textbf{(a)} Steady state: $\bar{k} = (1-\delta)\bar{k} + s\bar{k}^\alpha \implies \delta\bar{k} = s\bar{k}^\alpha$.
+\[
+\bar{k}^{1-\alpha} = \frac{s}{\delta} \implies \boxed{\bar{k} = \left(\frac{s}{\delta}\right)^{\frac{1}{1-\alpha}}}
+\]
+
+\textbf{(b)} $\bar{y} = \bar{k}^\alpha = \left(\frac{s}{\delta}\right)^{\frac{\alpha}{1-\alpha}}$. Investment: $\bar{i} = s\bar{y} = \delta\bar{k}$. Consumption:
+\[
+\bar{c} = (1-s)\bar{y} = (1-s)\left(\frac{s}{\delta}\right)^{\frac{\alpha}{1-\alpha}}
+\]
+\end{frame}
+
+\begin{frame}{Solution: Easy 1 (c)--(d)}
+\textbf{(c)} With $\alpha=1/3$, $s=0.2$, $\delta=0.05$:
+\[
+\bar{k} = (0.2/0.05)^{1/(1-1/3)} = 4^{3/2} = 8, \quad \bar{y} = 8^{1/3} = 2, \quad \bar{k}/\bar{y} = 4
+\]
+
+\textbf{(d)} A higher $s$ shifts the investment curve $sf(k)$ upward, leading to a higher intersection with $\delta k$---thus a higher $\bar{k}$ and $\bar{y}$. But in the long run, $\tilde{k}$ stabilizes and per-capita growth equals $\gamma$ (the exogenous technology growth rate). Saving determines the \textbf{level} of the balanced growth path, not its slope. Diminishing returns to capital ensure that extra investment cannot sustain permanently higher growth.
+\backbutton{q-e1}
+\end{frame}
+
+%% ----- SOLUTION EASY 2 -----
+\begin{frame}{Solution: Easy 2}
+\hypertarget{s-e2}{}
+
+\textbf{(a)} The steady-state condition for \emph{any} $f$ is $\delta\bar{k} = sf(\bar{k}) = s\bar{y}$. Rearranging: $\bar{k}/\bar{y} = s/\delta$. No functional-form assumption is used.
+
+\medskip
+\textbf{(b)} $\bar{k}/\bar{y} = 0.25/0.05 = 5$. U.S.\ data suggests $K/Y \approx 3$--$4$, so this is slightly high but broadly consistent.
+
+\medskip
+\textbf{(c)} If $\delta$ doubles: $\bar{k}/\bar{y} = 0.25/0.10 = 2.5$. The ratio halves. \textbf{Intuition:} faster depreciation erodes the capital stock more quickly. To maintain the same $K/Y$ ratio with higher $\delta$, you would need proportionally more saving. With fixed $s$, the ratio falls.
+\backbutton{q-e2}
+\end{frame}
+
+%% ----- SOLUTION EASY 3 -----
+\begin{frame}{Solution: Easy 3}
+\hypertarget{s-e3}{}
+
+\textbf{(a)} Country A (lower $k_0$) grows faster. With identical parameters, both share the same $\bar{k}$. Country A is further below $\bar{k}$, so diminishing returns imply a higher marginal product of capital and hence faster growth.
+
+\medskip
+\textbf{(b)} Yes to both. Identical parameters $\implies$ identical BGP. They converge to the same $\bar{k}$ (level) and the same growth rate $\gamma$ (growth).
+
+\medskip
+\textbf{(c)} \textbf{Conditional convergence}: countries with the same structural parameters converge to the same BGP. \textbf{Unconditional convergence}: all countries converge regardless of parameters. Solow predicts conditional, not unconditional.
+
+\medskip
+\textbf{(d)} All countries: no systematic relationship between initial income and growth (no unconditional convergence). OECD countries: clear negative relationship---conditional convergence holds among similar economies.
+\backbutton{q-e3}
+\end{frame}
+
+%% ----- SOLUTION EASY 4 -----
+\begin{frame}{Solution: Easy 4}
+\hypertarget{s-e4}{}
+
+\textbf{(a)} The marginal utility cost of giving up one unit of consumption today ($u'(c_t)$) must equal the discounted marginal utility gain from investing that unit, earning return $f'(k_{t+1})+1-\delta$, and consuming the proceeds tomorrow ($\beta[f'(k_{t+1})+1-\delta]u'(c_{t+1})$). At optimum, the household is indifferent between consuming now and later.
+
+\medskip
+\textbf{(b)} It is the gross return on capital: one unit invested yields $f'(k_{t+1})$ in marginal product plus $1-\delta$ in surviving capital.
+
+\medskip
+\textbf{(c)} If $\beta(1+r)>1$: the return to waiting exceeds impatience, so $u'(c_{t+1})<u'(c_t)$, meaning $c_{t+1}>c_t$---consumption is \textbf{growing}.
+
+\medskip
+\textbf{(d)} At steady state $c_{t+1}=c_t$, so $u'$ cancels: $1 = \beta[f'(\bar{k})+1-\delta]$, giving $f'(\bar{k})=1/\beta - 1+\delta$.
+\backbutton{q-e4}
+\end{frame}
+
+%% ----- SOLUTION EASY 5 -----
+\begin{frame}{Solution: Easy 5}
+\hypertarget{s-e5}{}
+
+\textbf{(a)} State: $k_t$ (capital, predetermined). Control: $c_t$ or equivalently $k_{t+1}$ (consumption/investment choice).
+
+\medskip
+\textbf{(b)} $V(k) = \max_{k' \in [0, f(k)+(1-\delta)k]} \left\{u(f(k)+(1-\delta)k - k') + \beta V(k')\right\}$.
+
+\medskip
+\textbf{(c)} Finite horizon has a terminal condition ($k_{T+1}=0$) that pins down the boundary. Infinite horizon has no terminal date, so TVC replaces it---ensuring the household doesn't accumulate assets with positive shadow value forever.
+
+\medskip
+\textbf{(d)} Saving rate: $s = k'/(Ak^\alpha) = \alpha\beta$. In the Solow model, $s$ is exogenous. Here it is endogenously pinned down by preferences ($\beta$) and technology ($\alpha$). With $\alpha=1/3$ and $\beta=0.96$, $s \approx 0.32$.
+\backbutton{q-e5}
+\end{frame}
+
+%% ----- SOLUTION EASY 6 -----
+\begin{frame}{Solution: Easy 6}
+\hypertarget{s-e6}{}
+
+\textbf{(a)} Write $u(c)=(c^{1-\sigma}-1)/(1-\sigma)$. As $\sigma\to 1$: apply L'H\^{o}pital by differentiating numerator and denominator with respect to $\sigma$:
+\[
+\lim_{\sigma\to 1}\frac{c^{1-\sigma}-1}{1-\sigma} = \lim_{\sigma\to 1}\frac{-c^{1-\sigma}\ln c}{-1} = \ln c
+\]
+
+\textbf{(b)} $\text{EIS} = 1/\sigma$. It measures the percent change in the consumption ratio $c_{t+1}/c_t$ per percent change in the gross return.
+
+\medskip
+\textbf{(c)} With $\sigma=2$: EIS $= 0.5$. A 1\% rise in the interest rate raises consumption growth by $0.5\%$.
+
+\medskip
+\textbf{(d)} Balanced growth requires that as $c_t$ grows at rate $\gamma$, the saving rate remains constant. CRRA is the unique class where the income and substitution effects of growing consumption on saving exactly offset, keeping $s$ constant along a balanced growth path.
+\backbutton{q-e6}
+\end{frame}
+
+%% ----- SOLUTION HARD 1 -----
+\begin{frame}{Solution: Hard 1 (a)--(b)}
+\hypertarget{s-h1}{}
+
+\textbf{(a)} Define $G(k) = (1-\delta)k + sk^\alpha$. Taylor expand around $\bar{k}$:
+\[
+k_{t+1} - \bar{k} \approx G'(\bar{k})(k_t - \bar{k})
+\]
+\[
+G'(\bar{k}) = 1 - \delta + s\alpha\bar{k}^{\alpha-1}
+\]
+
+\textbf{(b)} From steady state: $s\bar{k}^\alpha = \delta\bar{k}$, so $s\bar{k}^{\alpha-1} = \delta$. Therefore $s\alpha\bar{k}^{\alpha-1} = \alpha\delta$. Substituting:
+\[
+G'(\bar{k}) = 1 - \delta + \alpha\delta = 1 - \delta(1-\alpha)
+\]
+The convergence speed is $\lambda \equiv 1 - G'(\bar{k}) = \delta(1-\alpha)$.
+\end{frame}
+
+\begin{frame}{Solution: Hard 1 (c)--(e)}
+\textbf{(c)} $\lambda = 0.05 \times (1-1/3) = 0.05 \times 2/3 \approx 0.033$. Half-life: $h = \ln 2 / \lambda \approx 0.693/0.033 \approx 21$ years.
+
+\medskip
+\textbf{(d)} Two opposing forces from raising $s$:
+\begin{enumerate}
+  \item Higher $s$ increases the slope of $G$ (steeper investment curve) $\implies$ slower convergence.
+  \item Higher $s$ raises $\bar{k}$, where $f'(\bar{k})$ is smaller (diminishing returns) $\implies$ faster convergence.
+\end{enumerate}
+With Cobb-Douglas, these exactly cancel: $sf'(\bar{k}) = s\alpha\bar{k}^{\alpha-1} = \alpha\delta$, independent of $s$.
+
+\medskip
+\textbf{(e)} For CES with $\rho \neq 0$, the elasticity of substitution differs from 1, so the cancellation no longer holds. The marginal product $f'(\bar{k})$ depends on $s$ through a nonlinear channel, and $s$ generally affects $\lambda$.
+\backbutton{q-h1}
+\end{frame}
+
+%% ----- SOLUTION HARD 2 -----
+\begin{frame}{Solution: Hard 2 (a)--(b)}
+\hypertarget{s-h2}{}
+
+\textbf{(a)} Start from $K_{t+1} = (1-\delta)K_t + sK_t^\alpha(A_tL_t)^{1-\alpha}$. Divide by $A_tL_t$:
+\[
+\frac{K_{t+1}}{A_tL_t} = (1-\delta)\tilde{k}_t + s\tilde{k}_t^\alpha
+\]
+The LHS: $\frac{K_{t+1}}{A_tL_t} = \frac{A_{t+1}L_{t+1}}{A_tL_t}\cdot\frac{K_{t+1}}{A_{t+1}L_{t+1}} = (1+\gamma)(1+n)\tilde{k}_{t+1}$.
+
+\medskip
+\textbf{(b)} Set $\tilde{k}_{t+1}=\tilde{k}_t=\overline{\tilde{k}}$:
+\[
+[(1+\gamma)(1+n)-(1-\delta)]\overline{\tilde{k}} = s\overline{\tilde{k}}^\alpha
+\]
+\[
+\overline{\tilde{k}} = \left(\frac{s}{(1+\gamma)(1+n)+\delta-1}\right)^{\frac{1}{1-\alpha}}
+\]
+\end{frame}
+
+\begin{frame}{Solution: Hard 2 (c)--(e)}
+\textbf{(c)} Per-capita income: $y_t = A_t f(\tilde{k}_t)$. On BGP, $f(\tilde{k}_t) = f(\overline{\tilde{k}})$ constant. So $y_{t+1}/y_t = A_{t+1}/A_t = 1+\gamma$.
+
+\medskip
+\textbf{(d)} Linearize around BGP. The map is $\tilde{k}_{t+1} = \frac{(1-\delta)\tilde{k}_t + s\tilde{k}_t^\alpha}{(1+\gamma)(1+n)}$. The derivative at BGP:
+\[
+G'(\overline{\tilde{k}}) = \frac{1-\delta+s\alpha\overline{\tilde{k}}^{\alpha-1}}{(1+\gamma)(1+n)} = \frac{1-\delta+\alpha[(1+\gamma)(1+n)-1+\delta]}{(1+\gamma)(1+n)}
+\]
+\[
+\lambda = 1 - G'(\overline{\tilde{k}}) = (1-\alpha)\left[1-\frac{1-\delta}{(1+\gamma)(1+n)}\right]
+\]
+
+\textbf{(e)} $\lambda = (2/3)[1 - 0.954/(1.02\times1.01)] = (2/3)[1 - 0.954/1.0302] = (2/3)(1-0.926) \approx 0.049$. Half-life $\approx 14$ years. Empirical $\lambda\approx0.02$ gives half-life $\approx 35$ years. The model over-predicts convergence speed by a factor of $\sim 2.5$.
+\backbutton{q-h2}
+\end{frame}
+
+%% ----- SOLUTION HARD 3 -----
+\begin{frame}{Solution: Hard 3 (a)--(b)}
+\hypertarget{s-h3}{}
+
+\textbf{(a)} Write $k_t = \bar{k}e^{\hat{k}_t}$, $A_t = \bar{A}e^{\hat{A}_t}$. Substitute into $k_{t+1}=sA_tk_t^\alpha\ell^{1-\alpha}+(1-\delta)k_t$:
+\[
+\bar{k}(1+\hat{k}_{t+1}) \approx s\bar{A}\bar{k}^\alpha\ell^{1-\alpha}(1+\hat{A}_t+\alpha\hat{k}_t) + (1-\delta)\bar{k}(1+\hat{k}_t)
+\]
+Using $\delta\bar{k} = s\bar{A}\bar{k}^\alpha\ell^{1-\alpha}$ and collecting first-order terms:
+\[
+\hat{k}_{t+1} = (1-\delta(1-\alpha))\hat{k}_t + \delta\hat{A}_t
+\]
+
+\textbf{(b)} With $\hat{A}_t = \rho^t\varepsilon$, iterate:
+\[
+\hat{k}_{t+1} = \delta\varepsilon\sum_{\tau=0}^{t}(1-\lambda)^\tau \rho^{t-\tau} = \delta\varepsilon\rho^t\frac{1-\left(\frac{1-\lambda}{\rho}\right)^{t+1}}{1-\frac{1-\lambda}{\rho}}
+\]
+where $\lambda = \delta(1-\alpha)$.
+\end{frame}
+
+\begin{frame}{Solution: Hard 3 (c)--(d)}
+\textbf{(c)} From $y_t = A_tk_t^\alpha\ell^{1-\alpha}$, log-linearize: $\hat{y}_t = \hat{A}_t + \alpha\hat{k}_t$.
+
+Two channels:
+\begin{itemize}
+  \item \textbf{Direct effect} ($\hat{A}_t$): technology shock raises output immediately.
+  \item \textbf{Propagation effect} ($\alpha\hat{k}_t$): higher output $\to$ higher investment $\to$ higher future capital $\to$ higher future output. This channel is slower and more persistent.
+\end{itemize}
+
+\textbf{(d)} With $\delta=0.046$, $\alpha=1/3$, $\lambda=0.046\times 2/3\approx 0.031$:
+\begin{itemize}
+  \item $\hat{k}_1 = \delta\varepsilon = 0.046\times 0.01 = 0.00046$ (0.046\%).
+  \item $\hat{k}_5 = 0.046\times 0.01\times 0.9^4 \frac{1-(0.969/0.9)^5}{1-0.969/0.9} \approx 0.00198$ (0.198\%).
+  \item $\hat{y}_0 = \hat{A}_0 + \alpha\hat{k}_0 = 0.01 + 0 = 0.01$ (1\%, since $\hat{k}_0=0$).
+\end{itemize}
+\backbutton{q-h3}
+\end{frame}
+
+%% ----- SOLUTION HARD 4 -----
+\begin{frame}{Solution: Hard 4 (a)--(b)}
+\hypertarget{s-h4}{}
+
+\textbf{(a)} $w_0=w_1=10$. Lagrangian: $\mathcal{L} = \log c_0 + 0.95\log c_1 + \mu(10+10/1.05-c_0-c_1/1.05) + \lambda(10-c_0)$.
+
+Try interior ($\lambda=0$): Euler gives $1/c_0 = 0.95\times 1.05/c_1$, so $c_1 = 0.9975\,c_0$. Budget: $c_0 + c_1/1.05 = 10+10/1.05 = 19.524$. Solving: $c_0 \approx 10.013$, $c_1 \approx 9.988$, $a_1 = 10-c_0 \approx -0.013$. Since $a_1 < 0$, constraint binds!
+
+Re-solve with $a_1=0$: $c_0=10$, $c_1=10$. Constraint binds but barely.
+
+\medskip
+\textbf{(b)} $w_0=5$, $w_1=20$. Interior: $c_1=0.9975\,c_0$. Budget: $c_0+c_1/1.05 = 5+20/1.05=24.048$. Solving: $c_0\approx 12.33$. But $a_1 = 5-12.33<0$. Constraint binds hard: $c_0=5$, $c_1=20$.
+
+Economics: the household wants to borrow against high future income but cannot.
+\end{frame}
+
+\begin{frame}{Solution: Hard 4 (c)--(d)}
+\textbf{(c)} At the constrained optimum $c_0=5$, $c_1=20$:
+\[
+u'(c_0) = 1/5 = 0.2, \quad \beta(1+r)u'(c_1) = 0.95\times 1.05\times(1/20) = 0.04988
+\]
+Since $0.2 > 0.04988$: $u'(c_0) > \beta(1+r)u'(c_1)$. The household would like to borrow (shift consumption forward) but cannot---marginal utility of current consumption exceeds the discounted return from saving.
+
+\medskip
+\textbf{(d)} Unconstrained optimum: $c_0^*\approx 12.33$, $c_1^*\approx 12.30$. Constrained: $c_0^c=5$, $c_1^c=20$.
+
+Welfare comparison: $U^* = \log 12.33 + 0.95\log 12.30 \approx 4.887$. $U^c = \log 5 + 0.95\log 20 \approx 4.457$.
+
+Consumption-equivalent variation $\xi$: $(1+\xi)$ solves $\log(5(1+\xi))+0.95\log(20(1+\xi)) = U^*$. This gives $1.95\log(1+\xi) = 0.43$, so $\xi \approx e^{0.22}-1 \approx 24.6\%$.
+\backbutton{q-h4}
+\end{frame}
+
+%% ----- SOLUTION HARD 5 -----
+\begin{frame}{Solution: Hard 5 (a)--(b)}
+\hypertarget{s-h5}{}
+
+\textbf{(a)} $Y = [aK^\rho + (1-a)(AL)^\rho]^{1/\rho}$. Competitive pricing: $r = \partial Y/\partial K = a\left(\frac{Y}{K}\right)^{1-\rho}$. Capital share:
+\[
+\alpha_K = \frac{rK}{Y} = a\left(\frac{K}{Y}\right)^{\rho} \cdot \frac{Y}{K}\cdot K/Y = a\left(\frac{K}{Y}\right)^{\rho}
+\]
+More precisely:
+\[
+\alpha_K = \frac{a K^\rho}{aK^\rho + (1-a)(AL)^\rho} = \frac{a\tilde{k}^\rho}{a\tilde{k}^\rho + (1-a)}
+\]
+
+\textbf{(b)} As $\rho\to 0$, take logs: $\alpha_K = \frac{a\tilde{k}^0}{a\tilde{k}^0+(1-a)} = \frac{a}{a+(1-a)} = a$. Constant, independent of $\tilde{k}$.
+\end{frame}
+
+\begin{frame}{Solution: Hard 5 (c)--(d)}
+\textbf{(c)} Differentiate $\alpha_K$ w.r.t.\ $\tilde{k}$:
+\[
+\frac{\partial\alpha_K}{\partial\tilde{k}} = \frac{a\rho\tilde{k}^{\rho-1}(1-a)}{[a\tilde{k}^\rho+(1-a)]^2}
+\]
+The sign is $\text{sign}(\rho)$. If $\rho<0$ (elasticity of substitution $\sigma_s = 1/(1-\rho)<1$): capital deepening ($\tilde{k}\uparrow$) \emph{lowers} the capital share, hence \emph{raises} the labor share.
+
+Wait---but the labor share has \emph{declined}. So with $\rho<0$ and capital deepening, we'd predict \emph{rising} labor share. Contradiction.
+
+\medskip
+\textbf{(d)} The declining U.S.\ labor share with capital deepening requires $\rho>0$ (elasticity $>1$). Capital deepening raises the capital share when capital and labor are gross substitutes. Recent estimates (Karabarbounis and Neiman, 2014) indeed argue for $\sigma_s > 1$, driven by falling relative price of investment goods.
+\backbutton{q-h5}
+\end{frame}
+
+%% ----- SOLUTION HARD 6 -----
+\begin{frame}{Solution: Hard 6 (a)--(c)}
+\hypertarget{s-h6}{}
+
+\textbf{(a)} Euler: $\frac{1}{c_t} = \beta\frac{\alpha Ak_{t+1}^{\alpha-1}}{c_{t+1}}$. Terminal: $k_{T+1}=0$ (no value to leaving capital).
+
+\medskip
+\textbf{(b)} At $t=T$: $k_{T+1}=0$, so $c_T=Ak_T^\alpha$ and $s_T=0$. At $t=T-1$: use Euler to get $k_T = \alpha\beta Ak_{T-1}^\alpha/(1+\alpha\beta)$, giving $s_{T-1} = \alpha\beta/(1+\alpha\beta)$. By induction:
+\[
+s_t = \alpha\beta\frac{1-(\alpha\beta)^{T-t}}{1-(\alpha\beta)^{T-t+1}}
+\]
+
+\textbf{(c)} As $T-t \to \infty$: $(\alpha\beta)^{T-t}\to 0$ (since $\alpha\beta<1$), so $s_t \to \alpha\beta\frac{1}{1} = \alpha\beta$.
+\end{frame}
+
+\begin{frame}{Solution: Hard 6 (d)--(e)}
+\textbf{(d)} $s_T = \alpha\beta\frac{1-(\alpha\beta)^0}{1-(\alpha\beta)^1} = \alpha\beta\frac{0}{1-\alpha\beta} = 0$.
+
+This is completely intuitive: in the last period, there is no future to save for. All output is consumed.
+
+\medskip
+\textbf{(e)} As a function of ``time remaining'' $\tau \equiv T-t$:
+\begin{itemize}
+  \item $s(\tau=0) = 0$: no saving at the end.
+  \item $s(\tau)$ increases monotonically toward $\alpha\beta$.
+  \item Convergence is geometric at rate $\alpha\beta$.
+\end{itemize}
+
+\textbf{Economic logic:} With more periods ahead, the return to investing (measured by total future output produced) is higher, so the household saves more. The infinite-horizon limit represents the case where the investment motive is strongest, yielding the maximal constant saving rate $\alpha\beta$.
+\backbutton{q-h6}
+\end{frame}
+
+%% ----- SOLUTION VERY HARD 1 -----
+\begin{frame}{Solution: Very Hard 1 (a)--(b)}
+\hypertarget{s-v1}{}
+
+\textbf{(a)} Steady-state consumption: $\bar{c} = f(\bar{k})-\delta\bar{k}$. From the steady-state condition $\delta\bar{k}=s\bar{k}^\alpha$:
+\[
+\bar{c}(s) = \bar{k}^\alpha - \delta\bar{k} = \left(\frac{s}{\delta}\right)^{\frac{\alpha}{1-\alpha}} - \delta\left(\frac{s}{\delta}\right)^{\frac{1}{1-\alpha}}
+\]
+FOC: $\frac{d\bar{c}}{ds}=0$ yields $f'(\bar{k}^{GR})\frac{d\bar{k}}{ds} = \delta\frac{d\bar{k}}{ds}$, so $f'(\bar{k}^{GR})=\delta$.
+
+With Cobb-Douglas: $\alpha\bar{k}^{\alpha-1}=\delta \implies \bar{k}^{GR} = (\alpha/\delta)^{1/(1-\alpha)}$.
+
+\medskip
+\textbf{(b)} Compare $\bar{k}^{GR} = (\alpha/\delta)^{1/(1-\alpha)}$ with $\bar{k}=(s/\delta)^{1/(1-\alpha)}$: Golden Rule requires $s^{GR}=\alpha$. At this point $f'(\bar{k}^{GR})=\delta$, meaning the net marginal product of capital equals zero (gross MPK equals the depreciation rate).
+\end{frame}
+
+\begin{frame}{Solution: Very Hard 1 (c)--(d)}
+\textbf{(c)} In Cass-Koopmans: $f'(\bar{k})=1/\beta-1+\delta$. Golden Rule requires $f'(\bar{k}^{GR})=\delta$. These coincide when:
+\[
+1/\beta-1+\delta=\delta \implies \beta=1
+\]
+Only with no discounting ($\beta=1$) does the optimizing economy choose the Golden Rule. With $\beta<1$, impatience leads to $\bar{k}<\bar{k}^{GR}$---the economy under-accumulates relative to Golden Rule.
+
+\medskip
+\textbf{(d)} Dynamic inefficiency ($s>s^{GR}$) means $f'(\bar{k})<\delta$: the marginal product of capital is below depreciation. Reducing capital frees resources for consumption in every period (consuming the excess capital and reducing replacement investment). Everyone gains---a Pareto improvement.
+
+The Cass-Koopmans economy \textbf{cannot} be dynamically inefficient because $\beta<1$ implies $f'(\bar{k})=1/\beta-1+\delta>\delta$. Optimizing agents never over-accumulate.
+\backbutton{q-v1}
+\end{frame}
+
+%% ----- SOLUTION VERY HARD 2 -----
+\begin{frame}{Solution: Very Hard 2 (a)--(b)}
+\hypertarget{s-v2}{}
+
+\textbf{(a)} For $k\leq k^*$: $G(k) = (1-\delta)k + sBk$. This is linear with slope $(1-\delta+sB)$. For $k>k^*$: $G$ transitions to a concave function (Solow-like with $A>\!B$). The map can cross the 45-degree line up to three times: once in the linear region (if $sB<\delta$), once near $k^*$ (unstable), and once in the concave region (stable, high steady state).
+
+\medskip
+\textbf{(b)} Poverty-trap steady state in the linear region requires $G(k)=k$ for some $k<k^*$:
+\[
+(1-\delta+sB)k = k \implies sB = \delta
+\]
+But this gives $G(k)=k$ for \emph{all} $k\leq k^*$. For a proper trap at $k<k^*$ (where $G$ crosses from above): we need $sB<\delta$. Then $G(k)<k$ in the linear region and the only low steady state is $\bar{k}_1=0$. For a non-trivial poverty trap, we need the production function to have a region of increasing returns near $k^*$ so that $G$ crosses the 45-degree line from below at some positive $\bar{k}_1>0$.
+
+With $sB<\delta$: the poverty trap is at $\bar{k}_1=0$.
+\end{frame}
+
+\begin{frame}{Solution: Very Hard 2 (c)--(d)}
+\textbf{(c)} The economy escapes the trap by reaching a capital level above the unstable steady state $\bar{k}_2$ (where $G$ crosses the 45-degree line from below to above). The minimum big push is $\Delta k = \bar{k}_2 - k_{\text{trap}}$.
+
+For the piecewise specification: $\bar{k}_2$ is near $k^*$ where the transition from linear to concave production occurs. Precisely, $\bar{k}_2$ solves $G(\bar{k}_2)=\bar{k}_2$ in the increasing-returns region.
+
+\medskip
+\textbf{(d)} Starting from $k_0 = \bar{k}_1$ (the trap), temporarily raise $s$ to $\hat{s}$ for $\tau$ periods. Need $k_\tau > \bar{k}_2$ after $\tau$ periods of iteration under $\hat{s}$. In the linear region, $k_t = (1-\delta+\hat{s}B)^t k_0$ when $\hat{s}B>\delta$. The condition is:
+\[
+(1-\delta+\hat{s}B)^\tau \cdot k_0 > \bar{k}_2
+\]
+\[
+\tau > \frac{\ln(\bar{k}_2/k_0)}{\ln(1-\delta+\hat{s}B)}
+\]
+Higher $\hat{s}$ allows escape in fewer periods.
+\backbutton{q-v2}
+\end{frame}
+
+%% ----- SOLUTION VERY HARD 3 -----
+\begin{frame}{Solution: Very Hard 3 (a)--(b)}
+\hypertarget{s-v3}{}
+
+\textbf{(a)} With $V_0(k)=0$: the Bellman becomes $V_1(k) = \max_{k'\geq 0}\log(Ak^\alpha - k')$. This is maximized at $k'=0$ (no continuation value to investing). So $g_1(k)=0$ and
+\[
+V_1(k) = \log(Ak^\alpha) = \log A + \alpha\log k
+\]
+
+\textbf{(b)} $V_2(k) = \max_{k'\geq 0}\{\log(Ak^\alpha - k') + \beta[\log A + \alpha\log k']\}$. FOC:
+\[
+\frac{1}{Ak^\alpha - k'} = \frac{\beta\alpha}{k'} \implies k' = \frac{\alpha\beta}{1+\alpha\beta}Ak^\alpha
+\]
+So $g_2(k) = \frac{\alpha\beta}{1+\alpha\beta}Ak^\alpha$ and:
+\[
+V_2(k) = (1+\alpha\beta)\log\frac{Ak^\alpha}{1+\alpha\beta} + \alpha\beta\log\frac{\alpha\beta Ak^\alpha}{1+\alpha\beta}
+\]
+which has the form $E_2 + F_2\log k$ with $F_2 = \alpha(1+\alpha\beta)$.
+\end{frame}
+
+\begin{frame}{Solution: Very Hard 3 (c)--(d)}
+\textbf{(c)} Conjecture $V_n(k) = E_n + F_n\log k$. Bellman gives:
+\[
+V_{n+1}(k) = \max_{k'}\{\log(Ak^\alpha - k') + \beta(E_n + F_n\log k')\}
+\]
+FOC: $k' = \frac{\beta F_n}{1+\beta F_n}Ak^\alpha$. Substituting back yields:
+\[
+F_{n+1} = \alpha(1+\beta F_n)
+\]
+$E_{n+1}$ follows a similar recursion (involving $\log A$ and $F_n$ terms).
+
+\medskip
+\textbf{(d)} Steady state of $F_{n+1}=\alpha(1+\beta F_n)$: $F^* = \alpha + \alpha\beta F^*$, so:
+\[
+F^* = \frac{\alpha}{1-\alpha\beta}
+\]
+The policy function converges to $k' = \frac{\beta F^*}{1+\beta F^*}Ak^\alpha = \frac{\alpha\beta}{1-\alpha\beta+\alpha\beta}Ak^\alpha = \alpha\beta Ak^\alpha$.
+
+This matches the sequential solution exactly, confirming equivalence.
+\backbutton{q-v3}
+\end{frame}
+
+%% ----- SOLUTION VERY HARD 4 -----
+\begin{frame}{Solution: Very Hard 4 (a)--(b)}
+\hypertarget{s-v4}{}
+
+\textbf{(a)} Divide $K_{t+1}=(1-\delta)K_t+s_KY_t$ and $H_{t+1}=(1-\delta_H)H_t+s_HY_t$ by $A_{t+1}L_{t+1} = (1+\gamma)(1+n)A_tL_t$. Output per efficiency unit: $\tilde{y}_t = \tilde{k}_t^\alpha\tilde{h}_t^\phi$. The system is:
+\begin{align*}
+(1+\gamma)(1+n)\tilde{k}_{t+1} &= (1-\delta)\tilde{k}_t + s_K\tilde{k}_t^\alpha\tilde{h}_t^\phi \\
+(1+\gamma)(1+n)\tilde{h}_{t+1} &= (1-\delta_H)\tilde{h}_t + s_H\tilde{k}_t^\alpha\tilde{h}_t^\phi
+\end{align*}
+
+\textbf{(b)} At BGP, set $\tilde{k}_{t+1}=\tilde{k}_t$, $\tilde{h}_{t+1}=\tilde{h}_t$. Let $D\equiv(1+\gamma)(1+n)-1+\delta$ and $D_H\equiv(1+\gamma)(1+n)-1+\delta_H$:
+\[
+D\,\overline{\tilde{k}} = s_K\overline{\tilde{k}}^\alpha\overline{\tilde{h}}^\phi, \qquad D_H\,\overline{\tilde{h}} = s_H\overline{\tilde{k}}^\alpha\overline{\tilde{h}}^\phi
+\]
+Dividing: $\overline{\tilde{h}}/\overline{\tilde{k}} = (s_H D)/(s_K D_H)$. Substituting back yields closed-form expressions for both.
+\end{frame}
+
+\begin{frame}{Solution: Very Hard 4 (c)--(d)}
+\textbf{(c)} Linearizing the two-dimensional system around BGP, the eigenvalues of the Jacobian govern convergence. The dominant eigenvalue (closest to 1) determines the speed. By analogy with the one-dimensional case, the convergence speed generalizes to:
+\[
+\lambda \approx (1-\alpha-\phi)\left[1-\frac{1-\delta_{\text{eff}}}{(1+\gamma)(1+n)}\right]
+\]
+where $\delta_{\text{eff}}$ is a weighted average of $\delta$ and $\delta_H$. The key is that $\alpha+\phi$ replaces $\alpha$: human capital acts like a second accumulable factor, strengthening diminishing-returns attenuation and slowing convergence.
+
+\medskip
+\textbf{(d)} With $\alpha=\phi=1/3$: $1-\alpha-\phi = 1/3$, roughly a third of the baseline Solow value. Using similar $\delta$ values:
+\[
+\lambda \approx (1/3)\times 0.049/0.667 \approx 0.024
+\]
+Half-life $\approx 29$ years. This is much closer to the empirical $\lambda\approx 0.02$ (half-life $\approx 35$ years). The inclusion of human capital explains the ``too-fast convergence'' puzzle of the basic Solow model (Mankiw, Romer, Weil, 1992).
+\backbutton{q-v4}
+\end{frame}
+
+%% ----- SOLUTION VERY HARD 5 -----
+\begin{frame}{Solution: Very Hard 5 (a)--(b)}
+\hypertarget{s-v5}{}
+
+\textbf{(a)} Without nPg, choose $c_t = M$ for all $t$ and finance via assets: $a_{t+1} = (1+r)a_t - M$. Starting from $a_0>0$, eventually $a_t$ becomes negative and grows as $a_t \sim -(1+r)^t M/r$. Debt explodes, but no constraint prevents it. Lifetime utility $\sum\beta^t u(M) = u(M)/(1-\beta)$, which grows without bound as $M\to\infty$. The problem has no finite solution---utility is unbounded above.
+
+\medskip
+\textbf{(b)} Iterate $c_t + a_{t+1} = (1+r)a_t$ forward:
+\[
+a_{T+1}/(1+r)^T = a_0(1+r) - \sum_{t=0}^{T}c_t/(1+r)^t
+\]
+Taking $T\to\infty$, nPg ($\lim a_{T+1}/(1+r)^T \geq 0$) implies:
+\[
+\sum_{t=0}^{\infty}\frac{c_t}{(1+r)^t} \leq a_0(1+r)
+\]
+\end{frame}
+
+\begin{frame}{Solution: Very Hard 5 (c)--(d)}
+\textbf{(c)} Suppose $\lim_{t\to\infty}\beta^t u'(c_t)a_{t+1} = L > 0$. This means assets retain positive shadow value at infinity. Consider a perturbation: consume slightly more at date $T$ by reducing $a_{T+1}$ by $\varepsilon$. Utility gain: $\beta^T u'(c_T)\varepsilon > 0$. Cost: lost continuation value $\approx \beta^{T+1}u'(c_{T+1})(1+r)\varepsilon$, which by Euler equals $\beta^T u'(c_T)\varepsilon$. But the TVC failure means the limit of these shadow values is positive---the household has ``leftover wealth'' at infinity it could consume. Hence the original path is suboptimal.
+
+\medskip
+\textbf{(d)} With $\beta(1+r)=1$: Euler gives $c_t = c_0$ for all $t$. From the budget: $c_0\sum_{t=0}^{\infty}\beta^t = a_0(1+r)$, so $c_0 = a_0(1-\beta)(1+r)$. Then $a_t = a_0$ for all $t$ (constant assets). TVC: $\lim_{t\to\infty}\beta^t c_0^{-\sigma} a_0 = a_0 c_0^{-\sigma}\lim\beta^t = 0$ since $\beta<1$. Holds if $a_0$ is finite.
+\backbutton{q-v5}
+\end{frame}
+
+%% ----- SOLUTION VERY HARD 6 -----
+\begin{frame}{Solution: Very Hard 6 (a)--(b)}
+\hypertarget{s-v6}{}
+
+\textbf{(a)} Linearize: $x_{t+1}-x^* \approx G'(x^*)(x_t-x^*)$, so $x_t-x^* = [G'(x^*)]^t(x_0-x^*)$.
+
+If $G'(x^*)\in(0,1)$: $[G'(x^*)]^t > 0$ and shrinking $\implies$ deviation keeps same sign and vanishes. \textbf{Monotone convergence.}
+
+If $G'(x^*)\in(-1,0)$: $[G'(x^*)]^t$ alternates sign but $|G'(x^*)|^t\to 0$ $\implies$ deviation oscillates with shrinking amplitude. \textbf{Oscillatory convergence.}
+
+\medskip
+\textbf{(b)} $G'(\bar{k}) = 1-\delta+s\alpha\bar{k}^{\alpha-1} = 1-\delta+\alpha\delta = 1-\delta(1-\alpha)$. For $\alpha\in(0,1)$ and $\delta\in(0,1)$: $\delta(1-\alpha)\in(0,1)$, so $G'(\bar{k})\in(0,1)$. Monotone convergence always holds. $G'(\bar{k})<0$ is impossible because both $1-\delta>0$ (for reasonable $\delta$) and $s\alpha\bar{k}^{\alpha-1}>0$.
+\end{frame}
+
+\begin{frame}{Solution: Very Hard 6 (c)--(d)}
+\textbf{(c)} With $f(k)=k^\alpha e^{-\eta k}$: $G(k)=(1-\delta)k+sk^\alpha e^{-\eta k}$.
+\[
+G'(k) = 1-\delta+s(\alpha k^{\alpha-1}-\eta k^\alpha)e^{-\eta k}
+\]
+At steady state: $G'(\bar{k}) = 1-\delta+s\bar{k}^{\alpha-1}e^{-\eta\bar{k}}(\alpha-\eta\bar{k})$.
+
+Using $s\bar{k}^{\alpha-1}e^{-\eta\bar{k}} = \delta$ (from $\delta\bar{k}=sf(\bar{k})$):
+\[
+G'(\bar{k}) = 1-\delta+\delta(\alpha-\eta\bar{k}) = 1-\delta(1-\alpha+\eta\bar{k})
+\]
+For $G'(\bar{k})<0$: need $\delta(1-\alpha+\eta\bar{k})>1$, i.e., $\eta\bar{k} > 1/\delta-1+\alpha$.
+
+\medskip
+\textbf{(d)} Chaos requires $|G'(\bar{k})|>1$, i.e., $G'(\bar{k})<-1$: $\delta(1-\alpha+\eta\bar{k})>2$. With $\delta=0.05$: need $\eta\bar{k}>39+\alpha$. This requires extreme parameter values---capital would need to be in a region of severely declining production. Empirically implausible for aggregate economies, confirming that chaotic macroeconomic dynamics from the Solow structure are a theoretical curiosity, not an empirical concern.
+\backbutton{q-v6}
+\end{frame}
+
+\end{document}
